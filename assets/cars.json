@@ -11,7 +11,7 @@
     "Type": "Coupe",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/BMW_E30.png"
+    "Path": "https://world-clicker.com/assets/BMW_E30.png"
 },
 {
     "Name": "Ford Mustang",
@@ -26,7 +26,7 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Ford_Mustang.png",
+    "Path": "https://world-clicker.com/assets/Ford_Mustang.png",
     "textColor": "white"
 },
 {
@@ -42,7 +42,7 @@
     "Type": "Sports",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Lamborghini_Countach.png"
+    "Path": "https://world-clicker.com/assets/Lamborghini_Countach.png"
 }
 ,
 {
@@ -58,7 +58,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Toyota_Supra.png"
+    "Path": "https://world-clicker.com/assets/Toyota_Supra.png"
 }
 ,{
     "Name": "Porsche 911",
@@ -73,7 +73,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Porsche_911.png",
+    "Path": "https://world-clicker.com/assets/Porsche_911.png",
     "textColor": "white"
 }
 ,{
@@ -89,7 +89,7 @@
     "Type": "Compact",
     "Rarity": "Uncommon",
     "Color": "#1FDD1D",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Volkswagen_Beetle.png",
+    "Path": "https://world-clicker.com/assets/Volkswagen_Beetle.png",
     "textColor": "white"
 }
 ,{
@@ -105,7 +105,7 @@
     "Type": "Supercar",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Ferrari_F40.png"
+    "Path": "https://world-clicker.com/assets/Ferrari_F40.png"
 }
 ,{
     "Name": "Jeep Wrangler",
@@ -115,12 +115,12 @@
     "Horsepower": 285,
     "Weight_in_lbs": 4231,
     "Acceleration": 7.4,
-    "Year": "2021-01-01",
+    "Year": "20a21-01-01",
     "Origin": "USA",
     "Type": "Off-Road",
     "Rarity": "Common",
     "Color": "#BDBDB5",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Jeep_Wrangler.png"
+    "Path": "https://world-clicker.com/assets/Jeep_Wrangler.png"
 }
 ,{
     "Name": "Chevrolet Camaro",
@@ -135,7 +135,7 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Chevrolet_Camero.png",
+    "Path": "https://world-clicker.com/assets/Chevrolet_Camero.png",
     "textColor": "white"
 }
 ,{
@@ -151,7 +151,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Nissan_GT-R.png"
+    "Path": "https://world-clicker.com/assets/Nissan_GT-R.png"
 },{
     "Name": "Aston Martin DB5",
     "Miles_per_Gallon": 15,
@@ -165,7 +165,7 @@
     "Type": "Luxury",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Aston_Martin_DB5.png"
+    "Path": "https://world-clicker.com/assets/Aston_Martin_DB5.png"
 },{
     "Name": "Dodge Charger",
     "Miles_per_Gallon": 12,
@@ -179,7 +179,7 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Dodge_Charger.png",
+    "Path": "https://world-clicker.com/assets/Dodge_Charger.png",
     "textColor": "white"
 }
 
