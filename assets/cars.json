@@ -26,7 +26,8 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Ford_Mustang.png"
+    "Path": "https://fab-io.xyz/world-clicker/assets/Ford_Mustang.png",
+    "textColor": "white"
 },
 {
     "Name": "Lamborghini Countach",
@@ -72,7 +73,8 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Porsche_911.png"
+    "Path": "https://fab-io.xyz/world-clicker/assets/Porsche_911.png",
+    "textColor": "white"
 }
 ,{
     "Name": "Volkswagen Beetle",
@@ -87,7 +89,8 @@
     "Type": "Compact",
     "Rarity": "Uncommon",
     "Color": "#1FDD1D",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Volkswagen_Beetle.png"
+    "Path": "https://fab-io.xyz/world-clicker/assets/Volkswagen_Beetle.png",
+    "textColor": "white"
 }
 ,{
     "Name": "Ferrari F40",
@@ -132,7 +135,8 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Chevrolet_Camero.png"
+    "Path": "https://fab-io.xyz/world-clicker/assets/Chevrolet_Camero.png",
+    "textColor": "white"
 }
 ,{
     "Name": "Nissan GT-R",
@@ -175,7 +179,8 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://fab-io.xyz/world-clicker/assets/Dodge_Charger.png"
+    "Path": "https://fab-io.xyz/world-clicker/assets/Dodge_Charger.png",
+    "textColor": "white"
 }
 
 
