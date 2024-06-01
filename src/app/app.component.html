@@ -2,19 +2,19 @@
   <!-- <app-navbar></app-navbar> -->
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
-<app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event, 'carFound') " [coins]="coins"></app-leaflat-map>
-  @if (!visible && currentVisible  == "carFound" && true) {
+<app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event) " [coins]="coins"></app-leaflat-map>
+  @if (!visible && currentVisible  == "carFound") {
     <!-- <button (click)="switchVisibile('a')">Show</button> -->
-  <app-car-found (hideMap)="switchVisibile($event, 'carFound')" (addCoins)="addCoins($event)"></app-car-found>
+  <app-car-found (hideMap)="switchVisibile('carFound')" (addCoins)="addCoins($event)"></app-car-found>
 }
 
-@if (currentVisible == "garage"){
+@if (!visible && currentVisible == "garage"){
   
-  <app-my-cars></app-my-cars>}
+  <app-my-cars (hideMap)="switchVisibile($event)"></app-my-cars>}
 
 <div class="push"></div>
 
-<app-navigation (switchVisible)="switchVisibile($event.a, $event.currentVisible)"></app-navigation>
+<app-navigation (switchVisible)="switchVisibile($event)"></app-navigation>
 
 </div>}
 @else 

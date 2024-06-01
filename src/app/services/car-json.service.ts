@@ -7,7 +7,7 @@ export class CarJsonService {
   public cars
   constructor() {
   
-    fetch("https://world-clicker.com/assets/cars.json", {
+    fetch("../../assets/cars.json", {
     method: "GET",
     redirect: "follow"
   })

@@ -7,6 +7,7 @@
     height: calc(100vh - 0px);
     // display: none;
     // margin: 30px;
+    // transform: translate3d(00px, -141px, 0px)
   }
 .items {
   position: absolute;
@@ -17,6 +18,18 @@
   justify-content: space-around;
   width: 100%;
 }
+
+#user {
+  z-index: 50000;
+  position: absolute;
+  bottom: 35px;
+  left: 15px;
+  
+}
+#user img {
+  border-radius: 50%;
+}
+
 .items #cars {
   width: 100px;
   height: 25px;

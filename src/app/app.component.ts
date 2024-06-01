@@ -98,7 +98,10 @@ export class AppComponent implements OnInit{
 
   public visible = true;
 
-  public switchVisibile(a, currentVisible: string) {
+  public switchVisibile(currentVisible: string) {
+    console.log(currentVisible);
+    
+    
     console.log(this.visible);
     
     
