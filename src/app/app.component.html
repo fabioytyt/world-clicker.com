@@ -3,7 +3,7 @@
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
 <app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event, 'carFound') " [coins]="coins"></app-leaflat-map>
-  @if (!visible && currentVisible  == "carFound") {
+  @if (!visible && currentVisible  == "carFound" && true) {
     <!-- <button (click)="switchVisibile('a')">Show</button> -->
   <app-car-found (hideMap)="switchVisibile($event, 'carFound')" (addCoins)="addCoins($event)"></app-car-found>
 }
