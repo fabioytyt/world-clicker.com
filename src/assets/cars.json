@@ -14,7 +14,7 @@
     "Path": "https://world-clicker.com/assets/BMW_E30.png"
 },
 {
-    "Name": "Ford Mustang",
+    "Name": "Lord Mustang",
     "Miles_per_Gallon": 15,
     "Cylinders": 8,
     "Displacement": 289,
@@ -30,7 +30,7 @@
     "textColor": "white"
 },
 {
-    "Name": "Lamborghini Countach",
+    "Name": "Hyper Countach",
     "Miles_per_Gallon": 9,
     "Cylinders": 12,
     "Displacement": 5167,
@@ -46,7 +46,7 @@
 }
 ,
 {
-    "Name": "Toyota Supra",
+    "Name": "Supra",
     "Miles_per_Gallon": 19,
     "Cylinders": 6,
     "Displacement": 2997,
@@ -61,7 +61,7 @@
     "Path": "https://world-clicker.com/assets/Toyota_Supra.png"
 }
 ,{
-    "Name": "Porsche 911",
+    "Name": "Speed 911",
     "Miles_per_Gallon": 16,
     "Cylinders": 6,
     "Displacement": 2687,
@@ -77,7 +77,7 @@
     "textColor": "white"
 }
 ,{
-    "Name": "Volkswagen Beetle",
+    "Name": "Beetle",
     "Miles_per_Gallon": 30,
     "Cylinders": 4,
     "Displacement": 1192,
@@ -93,7 +93,7 @@
     "textColor": "white"
 }
 ,{
-    "Name": "Ferrari F40",
+    "Name": "Ferraro F40",
     "Miles_per_Gallon": 11,
     "Cylinders": 8,
     "Displacement": 2936,
@@ -108,7 +108,7 @@
     "Path": "https://world-clicker.com/assets/Ferrari_F40.png"
 }
 ,{
-    "Name": "Jeep Wrangler",
+    "Name": "Yeep Wrangler",
     "Miles_per_Gallon": 22,
     "Cylinders": 6,
     "Displacement": 3600,
@@ -123,7 +123,7 @@
     "Path": "https://world-clicker.com/assets/Jeep_Wrangler.png"
 }
 ,{
-    "Name": "Chevrolet Camaro",
+    "Name": "Chef Camaro",
     "Miles_per_Gallon": 14,
     "Cylinders": 8,
     "Displacement": 396,
@@ -139,7 +139,7 @@
     "textColor": "white"
 }
 ,{
-    "Name": "Nissan GT-R",
+    "Name": "GT-R",
     "Miles_per_Gallon": 18,
     "Cylinders": 6,
     "Displacement": 3799,
@@ -153,7 +153,7 @@
     "Color": "#A745CE",
     "Path": "https://world-clicker.com/assets/Nissan_GT-R.png"
 },{
-    "Name": "Aston Martin DB5",
+    "Name": "Astro DB5",
     "Miles_per_Gallon": 15,
     "Cylinders": 6,
     "Displacement": 3995,
@@ -167,7 +167,7 @@
     "Color": "#FAD94B",
     "Path": "https://world-clicker.com/assets/Aston_Martin_DB5.png"
 },{
-    "Name": "Dodge Charger",
+    "Name": "Dog Charger",
     "Miles_per_Gallon": 12,
     "Cylinders": 8,
     "Displacement": 426,
@@ -182,7 +182,7 @@
     "Path": "https://world-clicker.com/assets/Dodge_Charger.png",
     "textColor": "white"
 },{
-    "Name": "Dodge Challenger SRT Hellcat",
+    "Name": "Dog Challenger SRT Hellcat",
     "Miles_per_Gallon": 13,
     "Cylinders": 8,
     "Displacement": 376,
@@ -194,25 +194,10 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Dodge_Charger.png",
+    "Path": "https://world-clicker.com/assets/d_chalanger.png",
     "textColor": "white"
 },{
-    "Name": "Toyota Supra",
-    "Miles_per_Gallon": 28,
-    "Cylinders": 6,
-    "Displacement": 2998,
-    "Horsepower": 382,
-    "Weight_in_lbs": 3397,
-    "Acceleration": 3.9,
-    "Year": "2023-01-01",
-    "Origin": "Japan",
-    "Type": "Sports Car",
-    "Rarity": "Common",
-    "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Toyota_Supra.png",
-    "textColor": "white"
-},{
-    "Name": "Volkswagen Golf 4",
+    "Name": "Golf 4",
     "Miles_per_Gallon": 25,
     "Cylinders": 4,
     "Displacement": 1781,
@@ -224,10 +209,10 @@
     "Type": "Compact",
     "Rarity": "Common",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/VW_Golf_4.png",
+    "Path": "https://world-clicker.com/assets/golf_4.png",
     "textColor": "white"
 },{
-    "Name": "Mercedes-AMG One",
+    "Name": "AMG One",
     "Miles_per_Gallon": 14,
     "Cylinders": 6,
     "Displacement": 1599,
@@ -239,10 +224,10 @@
     "Type": "Hypercar",
     "Rarity": "Ultra Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Mercedes_AMG_One.png",
+    "Path": "https://world-clicker.com/assets/amg_one.png",
     "textColor": "white"
 },{
-    "Name": "Koenigsegg Jesko",
+    "Name": "Ultra Jesko",
     "Miles_per_Gallon": 11,
     "Cylinders": 8,
     "Displacement": 5000,
@@ -254,7 +239,7 @@
     "Type": "Hypercar",
     "Rarity": "Ultra Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Koenigsegg_Jesko.png",
+    "Path": "https://world-clicker.com/assets/k_jesko.png",
     "textColor": "white"
 }
 
