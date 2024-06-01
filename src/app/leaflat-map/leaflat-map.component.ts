@@ -2,6 +2,7 @@ import { AfterViewInit, Component,  EventEmitter,  Input,  OnInit, Output } from
 import * as L from 'leaflet';
 import { map } from 'rxjs';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-leaflat-map',
@@ -12,7 +13,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 })
 export class LeaflatMapComponent implements AfterViewInit{
 
-  @Output() public hideMap: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public hideMap= new EventEmitter();
   @Input() public coins: number = 0;
 
   public lat 
@@ -64,11 +65,36 @@ export class LeaflatMapComponent implements AfterViewInit{
     this.map = L.map('map', {
       center: [0,0],
       zoom: 18,
+      attributionControl: true,
+
+      // dragging: false,
+      
+    }).on("click", (e) => {
+      console.log(e.latlng.lat, e.latlng.lng);
+     
+      var popup = L.popup()
+        .setLatLng([e.latlng.lat,e.latlng.lng])
+        .setContent(`<p>Do you want to buy a Garage here</p>
+        
+        <p>Price: 5000 </p>
+        
+        <button mat-button color="primary">Buy Garage</button>
+        
+        )
+        .openOn(this.map);
+
+        document.getElementById("buyButton").addEventListener("click",(a) => {
+          console.log(a);
+          console.log(e.latlng);
+          
+        })
     });
+
+    
     this.moveMap([49,12]);
   // } );
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
+      maxZoom: 20,
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
@@ -122,13 +148,30 @@ this.currentPos = null;
     // this.map.removeControl(map.zoomControl);
 
   }
+
+  public onBuyGarageClick(e) {
+    console.log(e);
+    
+  }
+
   public onRepairShopClick() {
     console.log("jetzt");
     
   };
-  constructor() { }
-  public hideMapNow() {
-     this.hideMap.emit("a");
+
+  public user;
+  constructor(public auth: AuthService) { 
+    this.user = auth.user$.subscribe((e) => {console.log(e);
+      this.user = e;
+    })
+  }
+
+  public onUserClick() {
+    this.hideMap.emit('garage')
+  }
+
+  public hideMapNow(a) {
+     this.hideMap.emit(a);
   }
   // public onCarClick() {
     
@@ -254,7 +297,7 @@ this.currentPos = null;
 
 
   this.map.flyTo(a,18)
-
+    // this.map.tilt(45)
 
   // lng = lng + 0.001;
  
@@ -561,7 +604,7 @@ public generateRandomCars() {
         console.log(calcLat, calcLng,this.getDistance( [calcLat, calcLng], [this.lat,this.lng]), this.lat, this.lng);
       this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
-      this.hideMapNow();
+      this.hideMapNow("carFound");
       this.map.removeLayer(mark);
       this.map.removeLayer(circle);
       }
@@ -598,7 +641,7 @@ public genNewCars() {
         console.log(calcLat, calcLng,this.getDistance( [calcLat, calcLng], [this.lat,this.lng]), this.lat, this.lng);
       this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
-      this.hideMapNow();
+      this.hideMapNow("carFound");
       this.map.removeLayer(mark2);
       this.map.removeLayer(circle2);
       }

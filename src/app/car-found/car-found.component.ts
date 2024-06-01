@@ -27,11 +27,13 @@ export class CarFoundComponent implements OnInit{
     hp: 1, 
     topSpeed: 152
   };
+
+  
   public ngOnInit(): void {
-    this.getAllCars();
+    
     setTimeout(() => {
       this.getRandomCar();  
-    }, 100);
+    }, 500);
     if(localStorage.getItem("mycars")) {
       // this.myCars 
       const cars = JSON.parse(localStorage.getItem("mycars"));
@@ -50,14 +52,16 @@ export class CarFoundComponent implements OnInit{
   
 
   constructor(public car:CarJsonService) {
-
+    this.allCars = this.car.cars;
   }
   public getAllCars() {
     this.allCars = this.car.cars;
   }
   public getRandomCar() {
-  
-    const randomElement = this.allCars[Math.floor(Math.random() * this.allCars.length)];
+    console.log(this.car.cars);
+    
+  if(this.car.cars) {
+    const randomElement = this.car.cars[Math.floor(Math.random() * this.car.cars.length)];
     console.log(randomElement);
    this.randomCar = randomElement;
     this.randomCar.CPS =  this.randomCar.Horsepower * this.randomCar.Acceleration *this.randomCar.Cylinders / 1000
@@ -69,6 +73,7 @@ export class CarFoundComponent implements OnInit{
     console.log(this.CPS);
     this.getCPS();
     localStorage.setItem("mycars", JSON.stringify(this.myCars))
+  }
   }
   
   public getCPS() {

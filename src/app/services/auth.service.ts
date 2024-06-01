@@ -16,7 +16,7 @@ import * as firebase from "firebase/app"
 })
 export class AuthService {
   public user$: Observable<any>;
-
+  public userData: Observable<any>;
   constructor(
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -32,6 +32,17 @@ export class AuthService {
         }
       })
     )
+    this.userData = this.afAuth.authState.pipe( 
+      switchMap((user) => {
+        if(user) {
+          return this.afs.doc<any>(`users/${user.uid}/data/data`).valueChanges();
+        }
+        else {
+          return of(null);
+        }
+      })
+    )
+      
 
   }
   public currentUser;
@@ -73,6 +84,10 @@ export class AuthService {
       photoUrl: user.photoURL
     };
     return userRef.set(data, {merge: true});
+  }
+
+  public getUserData() {
+
   }
 
 
