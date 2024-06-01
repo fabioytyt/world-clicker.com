@@ -177,7 +177,7 @@
     "Year": "1968-01-01",
     "Origin": "USA",
     "Type": "Muscle",
-    "Rarity": "Rare",
+    "Rarity": "Epic",
     "Color": "#4E5AFD",
     "Path": "https://world-clicker.com/assets/Dodge_Charger.png",
     "textColor": "white"
@@ -192,10 +192,9 @@
     "Year": "2015-01-01",
     "Origin": "USA",
     "Type": "Muscle",
-    "Rarity": "Rare",
-    "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/d_chalanger.png",
-    "textColor": "white"
+    "Rarity": "Epic",
+    "Color": "#A745CE",
+    "Path": "https://world-clicker.com/assets/d_chalanger.png"
 },{
     "Name": "Golf 4",
     "Miles_per_Gallon": 25,
@@ -207,7 +206,7 @@
     "Year": "1997-01-01",
     "Origin": "Germany",
     "Type": "Compact",
-    "Rarity": "Common",
+    "Rarity": "Rare",
     "Color": "#4E5AFD",
     "Path": "https://world-clicker.com/assets/golf_4.png",
     "textColor": "white"
@@ -222,10 +221,9 @@
     "Year": "2022-01-01",
     "Origin": "Germany",
     "Type": "Hypercar",
-    "Rarity": "Ultra Rare",
-    "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/amg_one.png",
-    "textColor": "white"
+    "Rarity": "Legendary",
+    "Color": "#FAD94B",
+    "Path": "https://world-clicker.com/assets/amg_one.png"
 },{
     "Name": "Ultra Jesko",
     "Miles_per_Gallon": 11,
@@ -237,10 +235,9 @@
     "Year": "2020-01-01",
     "Origin": "Sweden",
     "Type": "Hypercar",
-    "Rarity": "Ultra Rare",
-    "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/k_jesko.png",
-    "textColor": "white"
+    "Rarity": "Legendary",
+    "Color": "#FAD94B",
+    "Path": "https://world-clicker.com/assets/k_jesko.png"
 }
 
 
