@@ -69,7 +69,28 @@ export class LeaflatMapComponent implements AfterViewInit{
 
       // dragging: false,
       
+    }).on("click", (e) => {
+      console.log(e.latlng.lat, e.latlng.lng);
+     
+      var popup = L.popup()
+        .setLatLng([e.latlng.lat,e.latlng.lng])
+        .setContent(`<p>Do you want to buy a Garage here</p>
+        
+        <p>Price: 5000 </p>
+        
+        <button mat-button color="primary">Buy Garage</button>
+        
+        )
+        .openOn(this.map);
+
+        document.getElementById("buyButton").addEventListener("click",(a) => {
+          console.log(a);
+          console.log(e.latlng);
+          
+        })
     });
+
+    
     this.moveMap([49,12]);
   // } );
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -127,6 +148,12 @@ this.currentPos = null;
     // this.map.removeControl(map.zoomControl);
 
   }
+
+  public onBuyGarageClick(e) {
+    console.log(e);
+    
+  }
+
   public onRepairShopClick() {
     console.log("jetzt");
     

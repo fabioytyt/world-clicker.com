@@ -1,5 +1,5 @@
 
-
+import { first } from 'rxjs/operators'
 
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -53,8 +53,28 @@ export class AppComponent implements OnInit{
     
 
   }
+  public oldDate;
   public ngOnInit(): void {
-    console.log(this.auth.user$, this.auth.currentUser);
+    // if(!this.oldDate){
+    console.log(this.auth.user$, this.auth.currentUser, this.auth.userData.subscribe((e) => {
+console.log(e,e.update);
+
+var seconds = new Date().getTime() / 1000;
+// if(e.update.seconds) {
+      if(e.update) {
+        console.log(seconds, e.update, seconds - e.update);
+
+   this.coins = +localStorage.getItem("coins") + (+localStorage.getItem("cps") * (seconds - e.update)) / 2;
+ console.log(this.coins);
+ 
+// }
+      }
+    
+    }
+    
+    ))
+    
+  // };
     
 
     // this.auth.googleSignin()
@@ -75,13 +95,18 @@ export class AppComponent implements OnInit{
       coins: localStorage.getItem("coins"),
       cps: localStorage.getItem("cps"),
     })
+  
+
+      
     setInterval(()=> {
+      
+      var seconds = new Date().getTime() / 1000;
       this.updateUserDat({
         myCars: JSON.parse(localStorage.getItem("mycars")),
         carcount: localStorage.getItem("carcount"),
         coins: localStorage.getItem("coins"),
         cps: localStorage.getItem("cps"),
-        update: new Date
+        update: seconds
       })
     }, 25000)
 
