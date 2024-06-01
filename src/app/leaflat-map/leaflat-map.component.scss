@@ -1,0 +1,132 @@
+.map-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(100vh - 0px);
+    // display: none;
+    // margin: 30px;
+  }
+.items {
+  position: absolute;
+  top: 25px; 
+  left: 0px;
+  display: flex;
+  z-index: 50000;
+  justify-content: space-around;
+  width: 100%;
+}
+.items #cars {
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 2px;
+}
+.items #gems {
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 2px;
+}
+.items #coins {
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 2px;
+}
+  
+  .map-frame {
+    border: 2px solid black;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
+
+  .marker-pin {
+    // height: 1px;
+    // width: 1px;
+    position: absolute;
+    // transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    z-index: 500;
+  }
+  // to draw white circle
+  .marker-pin::after {
+      content: '';
+      width: 1px;
+      height: 1px;
+      margin: 3px 0 0 3px;
+      background: #fff;
+      position: absolute;
+      border-radius: 50%;
+   }
+  
+  // to align icon
+  .custom-div-icon i {
+     position: absolute;
+     width: 5px;
+     font-size: 5px;
+     left: 0;
+     right: 0;
+     margin: 10px auto;
+     text-align: center;
+     
+  }
+
+  img {
+    width: 50px;
+    height: 55px;
+  }
+
+  #car {
+    width: 3px;
+    height: 3px;
+  }
+  #carCard {
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 5000;
+    background-color: white;
+    border: 1px black solid;
+    text-align: center;
+  }
+  #closeBtn {
+    width: 50px;
+    height: 50px;
+    // background-color: white;
+    // border: 1px solid black;
+    position: absolute;
+    right: 0px;
+    
+  }
+
+  #icon {
+    width: 30%;
+    height: 100%;
+  }
+
+  #icon img {
+    // width: 30%;;
+    height: 100%;
+    width: 75%;
+  }
+  #text {
+    width: 70%;
+  }
+
+  #text p {
+    position: relative;
+    top: -37.5px;
+    left: 25px;
+  }

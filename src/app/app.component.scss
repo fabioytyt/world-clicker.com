@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  .App {
+    text-align: center;
+  }
+
+  app-leaflet-map{
+    // height:calc(100%);
+    height: 100vh;
+  }
+
+  .push {
+    // position: absolute;
+    // bottom: 50px;
+    height: calc(100vh - 150px);
+
+  }
+
+  app-navigation  {
+    width: 100%;
+    // height: 100px;
+    
+    // position: sticky;
+    
+    // position: absolute;
+    
+    // margin-top: calc(100% - 50px);
+    height: 100px;
+    // bottom: 0px;
+    // top: calc(100% - 50px);
+    // background-color: red;
+    left: 0px;
+    z-index: 50000012874512329875491;
+  }
+
+  // .App{
+  //   background: url(https://world-clicker.com/assets/background.png) center center/cover;
+  // }

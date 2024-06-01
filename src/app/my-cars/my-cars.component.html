@@ -1,0 +1,38 @@
+<!-- <p>my-cars works!</p> -->
+
+
+<div class="container">
+    @if(myCars) {
+    @for(item of myCars; track item) {
+
+        <div id="car" [style.background]="item.Color">
+            <!-- <div class="container">
+                <div id="B"><p>B</p></div>
+                <div id="B"><p>Street</p></div>
+                <div id="B"><p>Lv. 12</p></div>
+            </div> -->
+            <br>
+            <img [src]="item.Path" width="50%" height="auto"><br>
+            <p>{{item.Name}}</p>
+        </div>
+
+    }
+
+}
+</div>
+
+<!-- Acceleration
+CPS
+Color
+Cylinders
+Displacement
+Horsepower
+Miles_per_Gallon
+Name
+Origin
+Path
+Rarity
+Type
+Weight_in_lbs
+Year
+-->

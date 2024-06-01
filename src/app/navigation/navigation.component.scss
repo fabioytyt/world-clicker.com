@@ -1,0 +1,28 @@
+.container {
+    width: 100%;
+    display: flex;
+    
+}
+.container div {
+    width: 20%;
+    height: 50px;
+    background-color: #2B2C2F;
+    border: 1px black solid;
+}
+* {
+    z-index:50000012874512329875491;
+}
+img{
+    border-radius: 50%;
+    
+}
+div {
+    height: 50px;
+    // position: absolute;
+    // bottom: 150;
+    // left: 50;
+    margin-left: 5px;
+}
+p {
+    margin-top: -5px;
+}

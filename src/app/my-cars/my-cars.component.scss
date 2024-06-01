@@ -1,0 +1,23 @@
+// #car {
+//     width: 33%;
+//     height: 100px;
+//     border: 1px black solid;
+//     flex: 1;
+// }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    // padding-left: 0;
+    
+}
+
+.container div {
+    // width: 33%;
+    height: 150px;
+    margin: 5px;
+    flex: 0 0 30.3333%;
+    outline: 1px solid;
+
+}

@@ -1,0 +1,32 @@
+@if(key) {<div class="App">
+  <!-- <app-navbar></app-navbar> -->
+  <!-- <app-map></app-map> -->
+  <!-- <app-ol-map></app-ol-map> -->
+<app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event, 'carFound') " [coins]="coins"></app-leaflat-map>
+  @if (!visible && currentVisible  == "carFound") {
+    <!-- <button (click)="switchVisibile('a')">Show</button> -->
+  <app-car-found (hideMap)="switchVisibile($event, 'carFound')" (addCoins)="addCoins($event)"></app-car-found>
+}
+
+@if (currentVisible == "garage"){
+  
+  <app-my-cars></app-my-cars>}
+
+<div class="push"></div>
+
+<app-navigation (switchVisible)="switchVisibile($event.a, $event.currentVisible)"></app-navigation>
+
+</div>}
+@else 
+ {<div *ngIf="auth.user$ | async as user; else login">
+  {{user.jsonData}}
+<hr>
+<button class="button" (click)="auth.signOut()"
+>Sign Out</button>
+
+</div>
+
+<ng-template #login>
+  <button class="button" (click)="signIn()">Login</button>
+</ng-template>
+}

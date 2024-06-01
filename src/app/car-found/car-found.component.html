@@ -1,0 +1,41 @@
+<!-- <p>car-found works!</p> -->
+<body>
+  
+<div id="carCard"  [style.display]="'block'" [style.background]="randomCar.Color" > 
+    <button id="closeBtn"  (click)="onCloseClick()">X</button>
+    <br>
+    @if (randomCar.Color) {
+      <br>
+    <h1  [style.color]="randomCar.textColor">{{randomCar.Name.toUpperCase()}}</h1>
+    <img [src]="randomCar.Path" width="80%"  >
+
+
+    <div class="container">
+      <div id="HP" [style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Horsepower}} hp</div>
+      <!-- <div id="TopSpeed">{{randomCar.TopSpeed}}</div> -->
+      <div id="MPG"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Miles_per_Gallon}} Miles per Gallon</div>
+      <div id="Cylinders"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Cylinders}} Cylinders</div>
+      <div id="Acceleration"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.Acceleration}}s 0 - 60 mp/h</div>
+      <div id="CPS"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.CPS}} coins per second</div>
+      <div id="year"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"   >
+      Year: {{randomCar.Year}}
+    </div>
+    </div>
+<br>
+    <!-- <p>src: {{randomCar.Path}}</p> -->
+    <!-- <p>Acceleration:{{randomCar.Acceleration}}</p> -->
+    <!-- <p>Cylinders: {{randomCar.Cylinders}}</p> -->
+    <!-- <p>{{randomCar.Name}}</p> -->
+    <!-- <p>Miles per Gallon:{{randomCar.Miles_per_Gallon}}</p> -->
+    <!-- <p>Displacement: {{randomCar.Displacement}}</p> -->
+    <!-- <p>HP:{{randomCar.Horsepower}}</p> -->
+    <!-- <p>Weight:{{randomCar.Weight_in_lbs}}</p> -->
+   
+    <!-- <p>Origin: {{randomCar.Origin}}</p> -->
+    <!-- <p>CPS: {{randomCar.CPS}}</p> -->
+    <!-- <p>rarity: {{randomCar.Rarity}}</p> -->
+    }
+    
+  </div>
+  
+</body>

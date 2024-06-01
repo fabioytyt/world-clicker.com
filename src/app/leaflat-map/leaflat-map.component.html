@@ -1,0 +1,33 @@
+<!-- <div class='marker-pin'><img src="../../assets/Man.png" ></div> -->
+
+<div class="items">
+  <div id="coins">
+    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(2).png"></div>
+    @if (coins < 1000) {<div id="text"><p>{{coins}}</p></div>}
+    @else if (coins >= 1000 && coins <= 999999) {<div id="text"><p>{{(coins/1000).toFixed(2)}}k</p></div>}
+    @else if (coins >= 1000000 && coins <= 999999999) {<div id="text"><p>{{(coins/1000000).toFixed(2)}}m</p></div>}
+  </div>
+  <div id="cars">
+    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(3).png"></div>
+    <div id="text"><p>{{cars}}</p></div>
+  </div>
+  <div id="gems">
+    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(1).png"></div>
+    <div id="text"><p>{{gems}}</p></div>
+  </div>
+</div>
+
+ <div class="map-container"  [style.display]="visible ? 'block' : 'none'" >
+    <div class="map-frame" [style.display]="visible ? 'block' : 'none'" >
+      <div id="map" [style.display]="visible ? 'block' : 'none'" ></div>
+    </div>
+  </div>
+  @if (visible == false) {
+<div id="carCard" [style.z-Index]="z" [style.display]="'block'"  > 
+  <button id="closeBtn" (click)="onCloseClick()">X</button>
+  <h1>Car</h1>
+  <p>{{randomCar.car}}</p>
+  <p>{{randomCar.hp}}</p>
+
+</div>
+  }
