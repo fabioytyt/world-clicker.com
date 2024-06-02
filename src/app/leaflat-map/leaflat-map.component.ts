@@ -352,11 +352,13 @@ this.currentPos = null;
 
   // this.map.fitBounds(circle.getBounds())
 // setInterval(()=> {
-console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a));
+console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a), a , this.oldPos);
 
   if(this.getDistance([this.oldPos.lat, this.oldPos.lng], a) > 5) {
 
   this.map.flyTo(a,18)
+  this.oldPos.lat = a[0]
+  this.oldPos.lng = a[1]
     // this.map.tilt(45)
 
   // lng = lng + 0.001;
