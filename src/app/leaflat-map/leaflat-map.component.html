@@ -2,8 +2,8 @@
 
 <div class="items">
   <div id="coins">
-    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(2).png"></div>
-    @if (coins < 1000) {<div id="text"><p>{{coins.toFixed(2)}}</p></div>}
+    <div id="icon"><img src="../../assets/icon%20(2).png"></div>
+    @if (coins < 1000) {<div id="text"><p>{{(coins).toFixed(2)}}</p></div>}
     @else if (coins >= 1000 && coins <= 999999) {<div id="text"><p>{{(coins/1000).toFixed(2)}}K</p></div>}
     @else if (coins >= 1000000 && coins <= 999999999) {<div id="text"><p>{{(coins/1000000).toFixed(2)}}M</p></div>}
     @else if (coins >= 1000000000 && coins <= 999999999999) {<div id="text"><p>{{(coins/1000000000).toFixed(2)}}B</p></div>}
@@ -12,11 +12,11 @@
     @else if (coins >= 1000000000000000000 && coins <= 999999999999999999999) {<div id="text"><p>{{(coins/1000000000000000000).toFixed(2)}}AB</p></div>}
   </div>
   <div id="cars">
-    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(3).png"></div>
+    <div id="icon"><img src="../../assets/icon%20(3).png"></div>
     <div id="text"><p>{{cars}}</p></div>
   </div>
   <div id="gems">
-    <div id="icon"><img src="https://fab-io.xyz/world-clicker/assets/icon%20(1).png"></div>
+    <div id="icon"><img src="../../assets/icon%20(1).png"></div>
     <div id="text"><p>{{gems}}</p></div>
   </div>
 </div>

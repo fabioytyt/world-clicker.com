@@ -342,19 +342,25 @@ this.currentPos = null;
   // public coins: number =0;
   public cars: number = +localStorage.getItem("carcount");
   public gems: number =0;
-
+  public oldPos = {
+    lat: 0,
+    lng: 0
+  };
   public moveMap(a:any[]) {
     
   // let circle= L.circle([lat,lng], {radius: accuracy}).addTo(this.map);
 
   // this.map.fitBounds(circle.getBounds())
 // setInterval(()=> {
+console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a));
 
+  if(this.getDistance([this.oldPos.lat, this.oldPos.lng], a) > 5) {
 
   this.map.flyTo(a,18)
     // this.map.tilt(45)
 
   // lng = lng + 0.001;
+}
  
 
   
