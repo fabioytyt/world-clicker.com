@@ -19,7 +19,8 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   public lat 
   public lng
   public ngOnInit(): void {
-    console.log(JSON.parse(localStorage.getItem("garages")));
+    if(localStorage.getItem("garagePrice")) {
+      console.log(JSON.parse(localStorage.getItem("garages")));
     let garages = JSON.parse(localStorage.getItem("garages"));
     this.garagePrice = JSON.parse(localStorage.getItem("garagePrice"))
     this.allGarages.push(...garages)
@@ -31,7 +32,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         let circle2 = L.circle([e.lat,e.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
       })
     }, 500);
-    
+  }
   }
 
   
