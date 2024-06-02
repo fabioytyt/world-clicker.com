@@ -11,37 +11,58 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './leaflat-map.component.html',
   styleUrl: './leaflat-map.component.scss'
 })
-export class LeaflatMapComponent implements AfterViewInit{
+export class LeaflatMapComponent implements AfterViewInit, OnInit{
 
   @Output() public hideMap= new EventEmitter();
   @Input() public coins: number = 0;
 
   public lat 
   public lng
+  public ngOnInit(): void {
+    console.log(JSON.parse(localStorage.getItem("garages")));
+    let garages = JSON.parse(localStorage.getItem("garages"));
+    this.garagePrice = JSON.parse(localStorage.getItem("garagePrice"))
+    this.allGarages.push(...garages)
+    console.log(garages);
+    setTimeout(() => {
+      garages.forEach( (e) => {
+        console.log(e);      
+        let garageMarker2 = L.marker([e.lat,e.lng], {icon: this.garageIcon}).addTo(this.map)
+        let circle2 = L.circle([e.lat,e.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
+      })
+    }, 500);
+    
+  }
 
   
    iconHome = L.divIcon({
     className: 'custom-div-icon',
-    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='https://fab-io.xyz/world-clicker/assets/home.png'>",
+    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='../../assets/home.png'>",
     iconSize: [86, 105],
     iconAnchor: [43,105]
   });
 
   iconCar = L.divIcon({
     className: 'custom-div-icon',
-    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img id='car' src='https://fab-io.xyz/world-clicker/assets/Car.png'>",
+    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img id='car' src='../../assets/Car.png'>",
     iconSize: [91, 105],
     iconAnchor: [48,105]
   });
   manCar = L.divIcon({
     className: 'custom-div-icon',
-    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='https://fab-io.xyz/world-clicker/assets/Man.png'>",
+    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='../../assets/Man.png'>",
     iconSize: [91, 105],
     iconAnchor: [48,105]
   });
   repairShop = L.divIcon({
     className: 'custom-div-icon',
-    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='https://fab-io.xyz/world-clicker/assets/Repair.png'>",
+    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='../../assets/Repair.png'>",
+    iconSize: [88, 117],
+    iconAnchor: [44,117]
+  });
+  garageIcon = L.divIcon({
+    className: 'custom-div-icon',
+    html: "<div style='background-color:#c30b82;' class='marker-pin'></div><img src='../../assets/garage_locater.png'>",
     iconSize: [88, 117],
     iconAnchor: [44,117]
   });
@@ -49,7 +70,7 @@ export class LeaflatMapComponent implements AfterViewInit{
   public map: L.map;
     public marker: L.marker;
   public carLayer = new L.FeatureGroup(); ;
-  
+  public allGarages: any[] = [];
   private initMap(): void {
 
     // navigator.geolocation.watchPosition((pos) => {
@@ -72,13 +93,27 @@ export class LeaflatMapComponent implements AfterViewInit{
     }).on("click", (e) => {
       console.log(e.latlng.lat, e.latlng.lng);
      
-      var popup = L.popup()
+      var popup: L.popup = L.popup()
         .setLatLng([e.latlng.lat,e.latlng.lng])
         .setContent(`<p>Do you want to buy a Garage here</p>
         
-        <p>Price: 5000 </p>
+        <p>Price: ${this.garagePrice.price + this.garagePrice.symbol} </p>
         
-        <button mat-button color="primary">Buy Garage</button>
+        <button id="buyButton">Buy Garage</button>
+        
+        <style>
+        #buyButton {
+        background-color: green;
+        width: 80%;
+        margin: auto;
+        border-radius: 5px;
+        color: white;
+        }
+        * {
+          text-align: center;
+        }
+        </style>
+        `
         
         )
         .openOn(this.map);
@@ -86,6 +121,23 @@ export class LeaflatMapComponent implements AfterViewInit{
         document.getElementById("buyButton").addEventListener("click",(a) => {
           console.log(a);
           console.log(e.latlng);
+          if(this.coins > (this.garagePrice.price * 1000)) {
+            console.log("passt");
+            this.coins = this.coins - this.garagePrice.price * 1000;
+            this.garagePrice.price = this.garagePrice.price * 15
+            this.allGarages.push({lat: e.latlng.lat, lng: e.latlng.lng})
+            console.log(this.allGarages);
+            
+            localStorage.setItem("garages", JSON.stringify(this.allGarages))
+            localStorage.setItem("garagePrice", JSON.stringify(this.garagePrice));
+            let garageMarker = L.marker([e.latlng.lat,e.latlng.lng], {icon: this.garageIcon}).addTo(this.map).on("click", (() => {
+            }) )
+            let circle = L.circle([e.latlng.lat,e.latlng.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
+            
+
+            
+            // popup.closePopup()
+          }
           
         })
     });
@@ -148,7 +200,9 @@ this.currentPos = null;
     // this.map.removeControl(map.zoomControl);
 
   }
-
+  public garagePrice={
+    price: 10, 
+    symbol: "K"};
   public onBuyGarageClick(e) {
     console.log(e);
     
