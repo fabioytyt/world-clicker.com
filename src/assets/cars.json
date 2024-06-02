@@ -11,7 +11,7 @@
     "Type": "Coupe",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/BMW_E30.png"
+    "Path": "../../assets/BMW_E30.png"
 },
 {
     "Name": "Lord Mustang",
@@ -26,7 +26,7 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Ford_Mustang.png",
+    "Path": "../../assets/Ford_Mustang.png",
     "textColor": "white"
 },
 {
@@ -42,7 +42,7 @@
     "Type": "Sports",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://world-clicker.com/assets/Lamborghini_Countach.png"
+    "Path": "../../assets/Lamborghini_Countach.png"
 }
 ,
 {
@@ -58,7 +58,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://world-clicker.com/assets/Toyota_Supra.png"
+    "Path": "../../assets/Toyota_Supra.png"
 }
 ,{
     "Name": "Speed 911",
@@ -73,7 +73,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://world-clicker.com/assets/Porsche_911.png",
+    "Path": "../../assets/Porsche_911.png",
     "textColor": "white"
 }
 ,{
@@ -89,7 +89,7 @@
     "Type": "Compact",
     "Rarity": "Uncommon",
     "Color": "#1FDD1D",
-    "Path": "https://world-clicker.com/assets/Volkswagen_Beetle.png",
+    "Path": "../../assets/Volkswagen_Beetle.png",
     "textColor": "white"
 }
 ,{
@@ -105,7 +105,7 @@
     "Type": "Supercar",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://world-clicker.com/assets/Ferrari_F40.png"
+    "Path": "../../assets/Ferrari_F40.png"
 }
 ,{
     "Name": "Yeep Wrangler",
@@ -120,7 +120,7 @@
     "Type": "Off-Road",
     "Rarity": "Common",
     "Color": "#BDBDB5",
-    "Path": "https://world-clicker.com/assets/Jeep_Wrangler.png"
+    "Path": "../../assets/Jeep_Wrangler.png"
 }
 ,{
     "Name": "Chef Camaro",
@@ -135,7 +135,7 @@
     "Type": "Muscle",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Chevrolet_Camero.png",
+    "Path": "../../assets/Chevrolet_Camero.png",
     "textColor": "white"
 }
 ,{
@@ -151,7 +151,7 @@
     "Type": "Sports",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://world-clicker.com/assets/Nissan_GT-R.png"
+    "Path": "../../assets/Nissan_GT-R.png"
 },{
     "Name": "Astro DB5",
     "Miles_per_Gallon": 15,
@@ -165,7 +165,7 @@
     "Type": "Luxury",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://world-clicker.com/assets/Aston_Martin_DB5.png"
+    "Path": "../../assets/Aston_Martin_DB5.png"
 },{
     "Name": "Dog Charger",
     "Miles_per_Gallon": 12,
@@ -179,7 +179,7 @@
     "Type": "Muscle",
     "Rarity": "Epic",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/Dodge_Charger.png",
+    "Path": "../../assets/Dodge_Charger.png",
     "textColor": "white"
 },{
     "Name": "Dog Challenger SRT Hellcat",
@@ -194,7 +194,7 @@
     "Type": "Muscle",
     "Rarity": "Epic",
     "Color": "#A745CE",
-    "Path": "https://world-clicker.com/assets/d_chalanger.png"
+    "Path": "../../assets/d_chalanger.png"
 },{
     "Name": "Golf 4",
     "Miles_per_Gallon": 25,
@@ -208,7 +208,7 @@
     "Type": "Compact",
     "Rarity": "Rare",
     "Color": "#4E5AFD",
-    "Path": "https://world-clicker.com/assets/golf_4.png",
+    "Path": "../../assets/golf_4.png",
     "textColor": "white"
 },{
     "Name": "AMG One",
@@ -223,7 +223,7 @@
     "Type": "Hypercar",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://world-clicker.com/assets/amg_one.png"
+    "Path": "../../assets/amg_one.png"
 },{
     "Name": "Ultra Jesko",
     "Miles_per_Gallon": 11,
@@ -237,7 +237,7 @@
     "Type": "Hypercar",
     "Rarity": "Legendary",
     "Color": "#FAD94B",
-    "Path": "https://world-clicker.com/assets/k_jesko.png"
+    "Path": "../../assets/k_jesko.png"
 }
 
 
