@@ -3,11 +3,12 @@ import * as L from 'leaflet';
 import { map } from 'rxjs';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
+import { CurrencyPipe } from '../currency.pipe';
 
 @Component({
   selector: 'app-leaflat-map',
   standalone: true,
-  imports: [MatSnackBarModule],
+  imports: [MatSnackBarModule, CurrencyPipe],
   templateUrl: './leaflat-map.component.html',
   styleUrl: './leaflat-map.component.scss'
 })

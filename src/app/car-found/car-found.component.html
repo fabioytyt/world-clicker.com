@@ -16,7 +16,7 @@
       <div id="MPG"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Miles_per_Gallon}} Miles per Gallon</div>
       <div id="Cylinders"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Cylinders}} Cylinders</div>
       <div id="Acceleration"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.Acceleration}}s 0 - 60 mp/h</div>
-      <div id="CPS"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.CPS}} coins per second</div>
+      <div id="CPS"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.CPS.toFixed(2)}} coins per second</div>
       <div id="year"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"   >
       Year: {{randomCar.Year}}
     </div>
