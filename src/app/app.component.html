@@ -19,20 +19,21 @@
 @else if (!visible && currentVisible == "profile"){
   <app-profile (hideMap)="switchVisibile($event)"></app-profile>
 
-}
+} 
+@else if(!visible && currentVisible == "friends"){
 
-</div>}
+  <app-friends (hideMap)="switchVisibile($event)"></app-friends>
+  }
 
-@else {
-
+</div>
 
 
 <!-- <app-navigation (switchVisible)="switchVisibile($event)"></app-navigation> -->
 
 
+}
 
-
-
+@else {
  <div *ngIf="auth.user$ | async as user; else login">
   {{user.jsonData}}
 <hr>

@@ -1,2 +1,21 @@
-<p>friends works!</p>
-<app-add-friend></app-add-friend>
+<app-add-friend (addFriend)="addFriend($event)"></app-add-friend>
+
+@for(item of friendData; track item) {
+ <!-- <img [src]="item.photoUrl">  
+ {{item.displayName}} -->
+@if(item) {
+ <div class="user container">
+    <img [src]="item.photoUrl" width="50px" height="50px">
+    <p id="username">{{item.displayName}}</p>
+</div>
+}
+}
+
+<div id="close" (click)="onCloseClick()">
+    <div class="closeBtn" (click)="onCloseClick()">
+        <button (click)="onCloseClick()">
+            <img src="../../assets/CloseBtn.png" width="40px" height="40px">
+            <!-- Button -->
+        </button>
+    </div>
+</div>

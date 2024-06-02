@@ -1,0 +1,45 @@
+.user {
+    width: 100px;;
+}
+
+.user img {
+    border-radius: 50%;
+    border: 1px black solid;
+}
+
+.user p {
+    margin-top: 15px;
+}
+.container{
+    display: flex;
+    justify-content: space-around;
+}
+.container div {
+    background-color: #E96245;
+    border: 1px black solid;
+}
+#qr {
+    width: 175px;
+    height: 175px;
+    border-radius: 5px;
+    border: 3px #f4f4f4 solid;
+    margin: auto;
+}
+#qr img{
+    // margin-left:12.5px;
+    margin-top: 12.5px;
+}
+* {
+    text-align: center;
+}
+
+#key {
+    // width: 175px;
+    // height: 175px;
+    border-radius: 5px;
+    border: 3px #f4f4f4 solid;
+    margin: auto;
+}
+#input {
+    margin: auto;
+}

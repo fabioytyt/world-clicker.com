@@ -7,6 +7,7 @@ import { switchMap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/compat/firestore' 
 import * as firebase from "firebase/app"
+import { collection } from 'firebase/firestore/lite';
 // import  auth from 'firebase/compat/app';
 
 
@@ -17,6 +18,7 @@ import * as firebase from "firebase/app"
 export class AuthService {
   public user$: Observable<any>;
   public userData: Observable<any>;
+
   constructor(
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -86,9 +88,31 @@ export class AuthService {
     return userRef.set(data, {merge: true});
   }
 
-  public getUserData() {
+  public getUserData(user) {
+    
+      // return this.afAuth.authState.pipe( 
+      //   switchMap((user) => {
+      //     if(user) {
+        // const userRef: AngularFirestoreDocument<any>
+        
+         
+          
+        return this.afs.collection('users/', ref => ref.where('uid', '==', user)).valueChanges();
+          
+        
+        
+            // return userRef;
+  //         }
+  //         else {
+  //           return of(null);
+  //         }
+  //       })
+  //     )
 
+
+        
   }
+
 
 
   public addDataToUser(data:  {}) {

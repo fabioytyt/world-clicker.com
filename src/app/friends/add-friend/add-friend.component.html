@@ -1,12 +1,18 @@
-<p>add-friend works!</p>
-<ngx-scanner-qrcode #action="scanner" (data)="output = $event" (event)="onScan($event)"></ngx-scanner-qrcode>
 
-<!-- data  -->
-<span>{{ action.data.value  }}</span><!-- value -->
-<span>{{ action.data   }}</span><!-- async -->
+@if(user) {
+    <div class="user container">
+        <img [src]="user.photoUrl" width="50px" height="50px">
+        <p>{{user.displayName}}</p>
+    </div>
+    <br>
+    }
+   @if (key) { 
+    <div id="key">
+    <p>{{key}}</p></div>
 
-<!-- Loading -->
-<p *ngIf="action.isLoading">⌛ Loading...</p>
+    <div id="qr"><img [src]="'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+ key" alt="" width="150px" height="150px"></div>}
+<!-- <app-scanner></app-scanner>-->
+<p>Add Friend</p>
 
-<!-- start -->
-<button (click)="action.isStart ? action.stop() : action.start()">{{action.isStart ? 'Stop' : 'Start'}}</button>
+<div id="input">
+<input type="text" #friendInput><button (click)="onFriendAdd(friendInput.value)">Add Friend</button></div>
