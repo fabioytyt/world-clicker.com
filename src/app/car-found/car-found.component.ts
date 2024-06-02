@@ -20,7 +20,7 @@ export class CarFoundComponent implements OnInit{
   public CPS: number= 0;
 
   public onCloseClick() {
-    this.hideMap.emit("a");
+    this.hideMap.emit("exit");
   }
   public randomCar: any = {
     car: "Car12",

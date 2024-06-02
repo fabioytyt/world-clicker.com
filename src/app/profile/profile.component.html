@@ -1,0 +1,71 @@
+
+<div class="logout">
+    <img src="../../assets/image-removebg-preview (11).png" width="30px" height="30px" (click)="onLogoutClick()">
+</div>
+<div class="menu container">
+    <div class="profile"></div>
+    <div class="friends"></div>
+</div>
+@if(user) {
+<div class="user container">
+    <img [src]="user.photoUrl" width="50px" height="50px">
+    <p>{{user.displayName}}</p>
+</div>
+}
+<br>
+<div class="container level">
+    <div class="Level">
+        <p>1</p>
+        <p>LEVEL</p>
+    </div>
+    <div class="Progressbar">
+        <!-- <mat-progress-bar mode="indeterminate" value="40" ></mat-progress-bar> -->
+        
+         <!-- <div id="outer"></div> -->
+         <div id="progress" [style.width]="progress + '%'"><p id="fortschritt">7.125/ 10000</p></div>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    <div id="icon" (click)="hideMap.emit('garage')"><img src="../../assets/car_icon.png" width="50px" height="50px"><p>Garage</p></div>
+    <div id="icon" ><img src="../../assets/addFriends_icon.png" width="50px" height="50px"><p>Friends</p></div>
+    <div id="icon" ><img src="../../assets/car_icon.png" width="50px" height="50px"><p>Garage</p></div>
+    <div id="icon" ><img src="../../assets/car_icon.png" width="50px" height="50px"><p>Garage</p></div>
+    
+</div>
+<br><br>
+<hr>
+
+<div class="container">
+    <p>Gelaufene Distanz</p>
+    <p>1.5 km</p>
+</div>
+<div class="container">
+    <p>Gelaufene Distanz</p>
+    <p>1.5 km</p>
+</div>
+<div class="container">
+    <p>Gelaufene Distanz</p>
+    <p>1.5 km</p>
+</div>
+<div class="container">
+    <p>Gelaufene Distanz</p>
+    <p>1.5 km</p>
+</div>
+<div class="container">
+    <p>Gelaufene Distanz</p>
+    <p>1.5 km</p>
+</div>
+
+<hr>
+
+<div id="close" (click)="onCloseClick()">
+    <div class="closeBtn" (click)="onCloseClick()">
+        <button (click)="onCloseClick()">
+            <img src="../../assets/CloseBtn.png" width="40px" height="40px">
+            <!-- Button -->
+        </button>
+    </div>
+</div>

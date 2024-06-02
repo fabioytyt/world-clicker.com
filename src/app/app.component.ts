@@ -16,13 +16,15 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { AuthService } from './services/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
 import { CommonModule } from '@angular/common';
+import { FriendsComponent } from './friends/friends.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule],
+  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -124,19 +126,28 @@ var seconds = new Date().getTime() / 1000;
   public visible = true;
 
   public switchVisibile(currentVisible: string) {
+    // this.visible = !this.visible;
+
+    if(currentVisible == "exit") {
+      this.visible = true;
+      this.currentVisible = "exit"
+    }
+
+    if(currentVisible != "exit") {
+      this.visible = false;
+      this.currentVisible = currentVisible
+    }
     console.log(currentVisible);
     
     
     console.log(this.visible);
     
     
-    this.visible = !this.visible;
+    
 
     
 
-    if(this.visible == false) {
-      this.currentVisible = currentVisible
-    }
+    
 
     
     console.log(this.visible);

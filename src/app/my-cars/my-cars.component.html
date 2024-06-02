@@ -1,8 +1,8 @@
 <!-- <p>my-cars works!</p> -->
 
-<div class="closeBtn" (click)="onCloseClick()">
+<!-- <div class="closeBtn" (click)="onCloseClick()">
     <p>X</p>
-</div>
+</div> -->
 <!-- <br><br>
 <br><br> -->
 <div class="container">
@@ -40,3 +40,11 @@ Type
 Weight_in_lbs
 Year
 -->
+<div id="close" (click)="onCloseClick()">
+    <div class="closeBtn" (click)="onCloseClick()">
+        <button (click)="onCloseClick()">
+            <img src="../../assets/CloseBtn.png" width="40px" height="40px">
+            <!-- Button -->
+        </button>
+    </div>
+</div>

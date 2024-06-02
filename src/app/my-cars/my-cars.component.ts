@@ -12,7 +12,9 @@ export class MyCarsComponent implements OnInit{
   public myCars;
   
   public onCloseClick() {
-    this.hideMap.emit("garage")
+    
+      this.hideMap.emit("exit")      
+    
   }
   
   ngOnInit(): void {

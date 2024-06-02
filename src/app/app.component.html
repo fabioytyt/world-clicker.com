@@ -5,20 +5,35 @@
 <app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event) " [coins]="coins"></app-leaflat-map>
   @if (!visible && currentVisible  == "carFound") {
     <!-- <button (click)="switchVisibile('a')">Show</button> -->
-  <app-car-found (hideMap)="switchVisibile('carFound')" (addCoins)="addCoins($event)"></app-car-found>
+  <app-car-found (hideMap)="switchVisibile($event)" (addCoins)="addCoins($event)"></app-car-found>
 }
 
 @if (!visible && currentVisible == "garage"){
   
-  <app-my-cars (hideMap)="switchVisibile($event)"></app-my-cars>}
+  <app-my-cars (hideMap)="switchVisibile($event)"></app-my-cars>
 
-<div class="push"></div>
+<!-- <div class="push"></div> -->
 
-<app-navigation (switchVisible)="switchVisibile($event)"></app-navigation>
+<!-- <app-navigation (switchVisible)="switchVisibile($event)"></app-navigation> -->
+}
+@else if (!visible && currentVisible == "profile"){
+  <app-profile (hideMap)="switchVisibile($event)"></app-profile>
+
+}
 
 </div>}
-@else 
- {<div *ngIf="auth.user$ | async as user; else login">
+
+@else {
+
+
+
+<!-- <app-navigation (switchVisible)="switchVisibile($event)"></app-navigation> -->
+
+
+
+
+
+ <div *ngIf="auth.user$ | async as user; else login">
   {{user.jsonData}}
 <hr>
 <button class="button" (click)="auth.signOut()"
