@@ -85,8 +85,10 @@ export class AuthService {
       displayName: user.displayName,
       photoUrl: user.photoURL
     };
-    return userRef.set(data, {merge: true});
+    return userRef.set(data);
   }
+
+  // , {merge: true}
 
   public getUserData(user) {
     
