@@ -1,4 +1,4 @@
-timeout /t 15
+timeout /t 25
 
 move "./docs/browser" "./"
 echo J|rmdir /s docs
