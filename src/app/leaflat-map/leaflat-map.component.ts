@@ -303,7 +303,7 @@ this.currentPos = null;
       let dinstance = (this.getDistance([e[0], e[1]],[this.lat, this.lng]));
       console.log("Distance:",dinstance, this.generiertePositionen);
       
-      if(dinstance < 1600) {
+      if(dinstance < 500) {
         neu = false
       }
 
@@ -355,7 +355,7 @@ this.currentPos = null;
 // setInterval(()=> {
 console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a), a , this.oldPos);
 
-  if(this.getDistance([this.oldPos.lat, this.oldPos.lng], a) > 5) {
+  if(this.getDistance([this.oldPos.lat, this.oldPos.lng], a) > 2) {
 
   this.map.flyTo(a,18)
   this.oldPos.lat = a[0]
