@@ -25,6 +25,11 @@
   <app-friends (hideMap)="switchVisibile($event)"></app-friends>
   }
 
+  @else if(!visible && currentVisible == "whenMoving"){
+    {{speed}}
+   <app-when-moving></app-when-moving>
+    }
+
 </div>
 
 

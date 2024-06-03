@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/compat/firestore' 
 import * as firebase from "firebase/app"
-import { collection } from 'firebase/firestore/lite';
+import { Firestore, collection, doc, setDoc } from 'firebase/firestore/lite';
 // import  auth from 'firebase/compat/app';
 
 
@@ -22,7 +22,8 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    // public firestore: Firestore
   ) {
     this.user$ = this.afAuth.authState.pipe( 
       switchMap((user) => {
@@ -44,8 +45,8 @@ export class AuthService {
         }
       })
     )
-      
 
+   
   }
   public currentUser;
   async googleSignin() {
@@ -62,10 +63,7 @@ export class AuthService {
     return this.router.navigate(['/']);
   }
 // ,inputData: {}
-  public updateUserData(user) {
-    console.log("update User Data");
-    
-    const firebaseConfig = {
+    public firebaseConfig = {
       apiKey: "AIzaSyBIOLzTWv2k0zlLq9irCW51C0s4cL2erzE",
       authDomain: "login-mit-firebase-database.firebaseapp.com",
       databaseURL: "https://login-mit-firebase-database-default-rtdb.firebaseio.com",
@@ -75,18 +73,29 @@ export class AuthService {
       appId: "1:1098866553749:web:16959403ee329378733c9c",
       measurementId: "G-YR90LWTHZ2"
     };
+  public updateUserData(user) {
+    console.log("update User Data");
+    
+    
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    console.log(user.uid);
-    
-    const data = {
+    console.log("uid:", user.email, user.displayName, user.photoUrl, user.uid, userRef);
+    let data:any = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoUrl: user.photoURL
-    };
+      photoUrl: user.photoUrl,
+      test: "test"
+      }
+      // console.log( userRef.set(data));
+      
+
+      this.addUserData(data)
+      // this.addInfos(data, user.uid);
     return userRef.set(data);
   }
+
+  
 
   // , {merge: true}
 
@@ -114,6 +123,24 @@ export class AuthService {
 
         
   }
+  public addUserData(data:  {}) {
+    
+    if(localStorage.getItem("key")){
+     // this.googleSignin()
+     // console.log(data, this.currentUser._delegate.uid);
+     const user = localStorage.getItem("key")
+     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}`);
+     return userRef.set(data, {merge: true});
+   }
+   else if (this.currentUser) {
+     console.log(data, this.currentUser._delegate.uid);
+     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}`);
+     return userRef.set(data, {merge: true});
+   }
+   else {
+     return null;
+   }
+ }
 
 
 

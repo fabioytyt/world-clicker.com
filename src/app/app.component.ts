@@ -18,13 +18,14 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { CommonModule } from '@angular/common';
 import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
+import { WhenMovingComponent } from './when-moving/when-moving.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent],
+  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -57,6 +58,21 @@ export class AppComponent implements OnInit{
   }
   public oldDate;
   public ngOnInit(): void {
+    navigator.geolocation.watchPosition((e) => {e
+      // speed in m/s
+      // * 3.6 = km/h
+      let speed = e.coords.speed * 3.6;
+      console.log("hier", speed );  
+      this.speed = speed;
+      if (speed > 25)  {
+        // this.visible = false;
+        // this.currentVisible = "";
+        this.switchVisibile("whenMoving")
+      }
+      else {
+        this.switchVisibile("exit");
+      }
+    })
     // if(!this.oldDate){
     console.log(this.auth.user$, this.auth.currentUser, this.auth.userData.subscribe((e) => {
 console.log(e,e.update);
@@ -124,7 +140,7 @@ var seconds = new Date().getTime() / 1000;
   }
 
   public visible = true;
-
+  public speed 
   public switchVisibile(currentVisible: string) {
     // this.visible = !this.visible;
 

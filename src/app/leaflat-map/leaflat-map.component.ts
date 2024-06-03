@@ -94,12 +94,13 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       
     }).on("click", (e) => {
       console.log(e.latlng.lat, e.latlng.lng);
-     
+      const currency = new CurrencyPipe();
+      
       var popup: L.popup = L.popup()
         .setLatLng([e.latlng.lat,e.latlng.lng])
         .setContent(`<p>Do you want to buy a Garage here</p>
         
-        <p>Price: ${this.garagePrice.price + this.garagePrice.symbol} </p>
+        <p>Price: ${ currency.transform(this.garagePrice.price) } </p>
         
         <button id="buyButton">Buy Garage</button>
         
@@ -123,9 +124,9 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         document.getElementById("buyButton").addEventListener("click",(a) => {
           console.log(a);
           console.log(e.latlng);
-          if(this.coins > (this.garagePrice.price * 1000)) {
+          if(this.coins > (this.garagePrice.price)) {
             console.log("passt");
-            this.coins = this.coins - this.garagePrice.price * 1000;
+            this.coins = this.coins - this.garagePrice.price;
             this.garagePrice.price = this.garagePrice.price * 15
             this.allGarages.push({lat: e.latlng.lat, lng: e.latlng.lng})
             console.log(this.allGarages);
@@ -203,7 +204,7 @@ this.currentPos = null;
 
   }
   public garagePrice={
-    price: 10, 
+    price: 10000, 
     symbol: "K"};
   public onBuyGarageClick(e) {
     console.log(e);

@@ -6,7 +6,7 @@ import { Pipe, PipeTransform, output } from '@angular/core';
 })
 export class CurrencyPipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): string {
+  public transform(value: number, ...args: unknown[]): string {
    
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const letters: string[] = [];
@@ -17,7 +17,7 @@ export class CurrencyPipe implements PipeTransform {
       }
     }
     
-    console.log(letters);
+    // console.log(letters);
 
     console.log(value, ...args);
     if (value < 1000) {return ((value).toFixed(2))}
@@ -27,10 +27,10 @@ export class CurrencyPipe implements PipeTransform {
     else if (value >= 1000000000000 && value <= 999999999999999) {return((value/1000000000000).toFixed(2)+"T")}
     else if (value >= 1000000000000000 ) {
       let next = value / 1000000000000;
-      console.log(value, next);
+      // console.log(value, next);
       let outputText = -1;
       while(next / 1000 > 1) {
-        console.log(next);
+        // console.log(next);
         next = next /1000;
         outputText++;
       }
