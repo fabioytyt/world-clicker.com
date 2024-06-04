@@ -64,13 +64,16 @@ export class AppComponent implements OnInit{
       let speed = e.coords.speed * 3.6;
       console.log("hier", speed );  
       this.speed = speed;
+      var visible;
       if (speed > 25)  {
         // this.visible = false;
         // this.currentVisible = "";
+        visible = true;
         this.switchVisibile("whenMoving")
       }
-      else {
+      else if(visible == true ){
         this.switchVisibile("exit");
+        visible = false;
       }
 
      
