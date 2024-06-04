@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, Output } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AuthService } from '../services/auth.service';
 
@@ -9,8 +9,14 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnChanges{
   @Output() public hideMap= new EventEmitter();
+  public ngOnChanges(changes): void {
+    this.cps = localStorage.getItem("cps")
+  }
+  
+  public cps = localStorage.getItem("cps")
+
   public user = JSON.parse(localStorage.getItem("userData"));
   constructor(public auth: AuthService) {
     if(localStorage.getItem("userData")) {
