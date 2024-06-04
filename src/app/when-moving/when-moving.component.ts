@@ -1,5 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { GaugeChartComponent, GaugeChartModule } from 'angular-gauge-chart';
+// import { GaugeChartComponent, GaugeChartModule } from 'angular-gauge-chart';
 import { NgxGaugeModule } from 'ngx-gauge';
 
 

@@ -20,6 +20,13 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   public lat 
   public lng
   public ngOnInit(): void {
+    // setInterval(() => {
+    //   this.auth.addDataToUser({
+    //     speedMap:  [{},{},{}]
+    //   })
+    // }, 2500)   
+    
+   
     if(localStorage.getItem("garagePrice")) {
       console.log(JSON.parse(localStorage.getItem("garages")));
     let garages = JSON.parse(localStorage.getItem("garages"));
@@ -34,6 +41,12 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       })
     }, 500);
   }
+
+  this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((data) => {
+    console.log('here:',data);
+    
+  })
+
   }
 
   
@@ -220,6 +233,12 @@ this.currentPos = null;
   constructor(public auth: AuthService) { 
     this.user = auth.user$.subscribe((e) => {console.log(e);
       this.user = e;
+      // this.speedMap = e.speedMap;
+    })
+
+    auth.userData.subscribe((e) => {
+      console.log("userData:",e);
+      this.speedMap = e.speedMap;
     })
   }
 
@@ -284,7 +303,7 @@ this.currentPos = null;
     this.marker = L.marker([a.coords.latitude,a.coords.longitude], {icon: this.manCar}).addTo(this.map);
     // this.carLayer.addLayer(this.marker)
    
-    this.moveMap([a.coords.latitude, a.coords.longitude])
+    this.moveMap([a.coords.latitude, a.coords.longitude], a.coords.speed)
     
     console.log(this.marker, this.carLayer);
     
@@ -348,7 +367,8 @@ this.currentPos = null;
     lat: 0,
     lng: 0
   };
-  public moveMap(a:any[]) {
+  public speedMap = []
+  public moveMap(a:any[], speed?: any) {
     
   // let circle= L.circle([lat,lng], {radius: accuracy}).addTo(this.map);
 
@@ -362,7 +382,18 @@ console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a), a , this.ol
   this.oldPos.lat = a[0]
   this.oldPos.lng = a[1]
     // this.map.tilt(45)
-
+    if(speed) {
+    this.speedMap.push({
+      lat: a[0],
+      lng: a[1],
+      speed: speed
+    })
+  setInterval(() => {
+    this.auth.addDataToUser({
+      speedMap: this.speedMap
+    })
+  }, 2500)    
+  }
   // lng = lng + 0.001;
 }
  

@@ -35,7 +35,9 @@ export class AuthService {
         }
       })
     )
+      
     this.userData = this.afAuth.authState.pipe( 
+    
       switchMap((user) => {
         if(user) {
           return this.afs.doc<any>(`users/${user.uid}/data/data`).valueChanges();
@@ -130,12 +132,12 @@ export class AuthService {
      // console.log(data, this.currentUser._delegate.uid);
      const user = localStorage.getItem("key")
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}`);
-     return userRef.set(data, {merge: true});
+     return userRef.set(data);
    }
    else if (this.currentUser) {
      console.log(data, this.currentUser._delegate.uid);
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}`);
-     return userRef.set(data, {merge: true});
+     return userRef.set(data);
    }
    else {
      return null;
@@ -161,6 +163,10 @@ export class AuthService {
     else {
       return null;
     }
+  }
+
+  public getDataFromUser(user) {
+    return this.afs.collection(`users/${user}/data/data`, ref => ref.where('uid', '==', user)).valueChanges();
   }
 
 

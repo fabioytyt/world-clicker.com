@@ -3,8 +3,11 @@
 <p>{{speed}}</p>
 
 <ngx-gauge type="semi" 
-           [value]="gaugeValue" 
+           [value]="speed" 
            [label]="gaugeLabel"  
            [append]="gaugeAppendText"
-           [max]="250">
+           [max]="250"
+           [thick]="10"
+           >
+           
 </ngx-gauge>
