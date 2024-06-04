@@ -1,1 +1,10 @@
 <p>when-moving works!</p>
+<p>{{distance}}</p>
+<p>{{speed}}</p>
+
+<ngx-gauge type="semi" 
+           [value]="gaugeValue" 
+           [label]="gaugeLabel"  
+           [append]="gaugeAppendText"
+           [max]="250">
+</ngx-gauge>

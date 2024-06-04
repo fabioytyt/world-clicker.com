@@ -72,6 +72,8 @@ export class AppComponent implements OnInit{
       else {
         this.switchVisibile("exit");
       }
+
+     
     })
     // if(!this.oldDate){
     console.log(this.auth.user$, this.auth.currentUser, this.auth.userData.subscribe((e) => {
@@ -87,7 +89,7 @@ var seconds = new Date().getTime() / 1000;
  
 // }
       }
-    
+      // this.currentVisible("whenMoving")
     }
     
     ))
