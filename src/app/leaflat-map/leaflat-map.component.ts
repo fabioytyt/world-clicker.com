@@ -86,7 +86,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
     });
     
     this.map = L.map('map', {
-      center: [0,0],
+      center: [49.2,10.5],
       zoom: 18,
       attributionControl: true,
 
