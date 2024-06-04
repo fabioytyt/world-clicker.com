@@ -57,6 +57,8 @@ export class AuthService {
     this.currentUser = credential.user;
     console.log(credential);
     localStorage.setItem("key", credential.user.uid)
+    localStorage.setItem("userData", JSON.stringify(credential.user))
+    this.updateUserData(credential.user);
     return this.updateUserData(credential.user);
   }
 
@@ -81,7 +83,7 @@ export class AuthService {
     
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    console.log("uid:", user.email, user.displayName, user.photoUrl, user.uid, userRef);
+    console.log("uid:", user.email, user.displayName, user.photoUrl, user.uid, userRef, user);
     let data:any = {
       uid: user.uid,
       email: user.email,
@@ -91,7 +93,7 @@ export class AuthService {
       }
       // console.log( userRef.set(data));
       
-
+      this.addDataToUser(data)
       this.addUserData(data)
       // this.addInfos(data, user.uid);
     return userRef.set(data);
@@ -153,12 +155,12 @@ export class AuthService {
       // console.log(data, this.currentUser._delegate.uid);
       const user = localStorage.getItem("key")
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}/data/data`);
-      return userRef.set(data, {merge: true});
+      return userRef.set(data);
     }
     else if (this.currentUser) {
       console.log(data, this.currentUser._delegate.uid);
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}/data/data`);
-      return userRef.set(data, {merge: true});
+      return userRef.set(data);
     }
     else {
       return null;

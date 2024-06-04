@@ -229,12 +229,23 @@ this.currentPos = null;
     
   };
 
-  public user;
+  public user = JSON.parse(localStorage.getItem("userData"));
   constructor(public auth: AuthService) { 
+
+    if(localStorage.getItem("userData")) {
+      console.log(JSON.parse(localStorage.getItem("userData")));
+      
+      this.user = JSON.parse(localStorage.getItem("userData"))
+      this.user.photoUrl = this.user.photoURL
+      console.log(this.user);
+      
+    }
+    else {
+
     this.user = auth.user$.subscribe((e) => {console.log(e);
       this.user = e;
       // this.speedMap = e.speedMap;
-    })
+    })}
 
     auth.userData.subscribe((e) => {
       console.log("userData:",e);

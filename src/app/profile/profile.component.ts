@@ -11,12 +11,31 @@ import { AuthService } from '../services/auth.service';
 })
 export class ProfileComponent {
   @Output() public hideMap= new EventEmitter();
-  public user;
+  public user = JSON.parse(localStorage.getItem("userData"));
   constructor(public auth: AuthService) {
+    if(localStorage.getItem("userData")) {
+      console.log(JSON.parse(localStorage.getItem("userData")));
+      
+      this.user = JSON.parse(localStorage.getItem("userData"))
+      console.log(this.user);
+      this.user.photoUrl = this.user.photoURL
+      
+    }
+    else {
+
     auth.user$.subscribe( (e) => {
       console.log(e);
-      this.user = e;
+      if(e) {
+      this.user = e;}
+      else {
+
+      }
     })
+    auth.getDataFromUser((e) => {
+      // this.user = 
+    })
+  }
+    
   }
 
   public progress = 0;
