@@ -59,6 +59,7 @@ export class AuthService {
     localStorage.setItem("key", credential.user.uid)
     localStorage.setItem("userData", JSON.stringify(credential.user))
     this.updateUserData(credential.user);
+    this.addDataToUser({user: credential.user});
     return this.updateUserData(credential.user);
   }
 
