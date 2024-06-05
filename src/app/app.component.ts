@@ -15,17 +15,18 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthService } from './services/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WhenMovingComponent } from './when-moving/when-moving.component';
+import { PrettyjsonPipe } from './prettyjson.pipe';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent],
+  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit{
     if (localStorage.getItem("key")) {
       window.location.reload();
     }
+    
    }, 500)
    
   }
@@ -58,6 +60,7 @@ export class AppComponent implements OnInit{
   }
   public oldDate;
   public ngOnInit(): void {
+    this.myCars = JSON.parse(localStorage.getItem("mycars"))
     navigator.geolocation.watchPosition((e) => {e
       // speed in m/s
       // * 3.6 = km/h
@@ -139,7 +142,7 @@ var seconds = new Date().getTime() / 1000;
     
   }
   public coins = 0;
-  
+  public myCars: [];
   public updateUserDat( data: {}){
     this.auth.addDataToUser(data)
   }

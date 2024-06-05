@@ -1,6 +1,6 @@
 <p>when-moving works!</p>
-<p>{{distance}}</p>
-<p>{{speed}}</p>
+<p>{{distance}} Meter</p>
+<p>{{speed}} km/h</p>
 
 <ngx-gauge type="semi" 
            [value]="speed" 
@@ -11,3 +11,8 @@
            >
            
 </ngx-gauge>
+
+<br><br>
+@for( item of speedMap; track item) {
+    {{item | prettyjson}}<br>
+}

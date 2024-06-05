@@ -2,6 +2,8 @@ import { Component, NgModule, OnInit } from '@angular/core';
 // import { GaugeChartComponent, GaugeChartModule } from 'angular-gauge-chart';
 import { NgxGaugeModule } from 'ngx-gauge';
 import { AuthService } from '../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { PrettyjsonPipe } from '../prettyjson.pipe';
 
 
 
@@ -10,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-when-moving',
   standalone: true,
-  imports: [NgxGaugeModule],
+  imports: [NgxGaugeModule, CommonModule, PrettyjsonPipe],
   templateUrl: './when-moving.component.html',
   styleUrl: './when-moving.component.scss'
 })
