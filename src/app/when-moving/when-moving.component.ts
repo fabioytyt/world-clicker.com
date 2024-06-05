@@ -1,6 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 // import { GaugeChartComponent, GaugeChartModule } from 'angular-gauge-chart';
 import { NgxGaugeModule } from 'ngx-gauge';
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -14,6 +15,8 @@ import { NgxGaugeModule } from 'ngx-gauge';
   styleUrl: './when-moving.component.scss'
 })
 export class WhenMovingComponent implements OnInit{
+  constructor(public auth: AuthService) {}
+
   ngOnInit() {
 setInterval( () => {
 
@@ -21,9 +24,23 @@ setInterval( () => {
 }, 500)
 
     navigator.geolocation.watchPosition( (e) => {
-      this.speed = e.coords.speed;
+      this.speed = e.coords.speed * 3.6;
+
+      if(e.coords.speed) {
+        this.speedMap.push({
+          lat: e.coords.latitude,
+          lng: e.coords.longitude,
+          speed: e.coords.speed
+        })
+      }
     })
+    setInterval(() => {
+      this.auth.addDataToUser({speedMap: this.speedMap})
+    }, 25000)
   }
+  public speedMap = []
+
+  
 
   public toRadian(a) {
     var pi = Math.PI;
@@ -53,9 +70,7 @@ setInterval( () => {
     lng: 0
   };
   public moveMap(a:any[]) {
-    
- 
-  console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a), a , this.oldPos);
+    console.log(this.getDistance([this.oldPos.lat, this.oldPos.lng], a), a , this.oldPos);
   
     if(this.getDistance([this.oldPos.lat, this.oldPos.lng], a) > 2) {
       this.distance = this.distance + 2;
