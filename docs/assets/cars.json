@@ -238,64 +238,6 @@
     "Rarity": "Legendary",
     "Color": "#FAD94B",
     "Path": "../../assets/k_jesko.png"
-},
-{
-    "Name": "Mitsubishi Lancer Evolution IX",
-    "Miles_per_Gallon": 20,
-    "Cylinders": 4,
-    "Displacement": 1997,
-    "Horsepower": 286,
-    "Weight_in_lbs": 3263,
-    "Acceleration": 4.5,
-    "Year": "2006-01-01",
-    "Origin": "Japan",
-    "Type": "Rally",
-    "Rarity": "Epic",
-    "Path": "../../assets/Mitsubishi_Lancer.png",
-    "Color": "#A745CE"
-},
-{
-    "Name": "Peugeot 5008",
-    "Miles_per_Gallon": 35,
-    "Cylinders": 4,
-    "Displacement": 1598,
-    "Horsepower": 165,
-    "Weight_in_lbs": 3527,
-    "Acceleration": 9.2,
-    "Year": "2017-01-01",
-    "Origin": "France",
-    "Type": "SUV",
-    "Rarity": "Uncommon",
-    "Path": "../../assets/Peugeot_5008.png",
-    "textColor": "white"
-},
-{
-    "Name": "BMW F30 318d",
-    "Miles_per_Gallon": 52,
-    "Cylinders": 4,
-    "Displacement": 1995,
-    "Horsepower": 143,
-    "Weight_in_lbs": 3307,
-    "Acceleration": 9.0,
-    "Year": "2012-01-01",
-    "Origin": "Germany",
-    "Type": "Sedan",
-    "Rarity": "Common",
-    "Path": "../../assets/BMW_F30.png"
-},
-{
-    "Name": "Toyota Yaris",
-    "Miles_per_Gallon": 37,
-    "Cylinders": 4,
-    "Displacement": 1299,
-    "Horsepower": 86,
-    "Weight_in_lbs": 2094,
-    "Acceleration": 11.0,
-    "Year": "2002-01-01",
-    "Origin": "Japan",
-    "Type": "Compact",
-    "Rarity": "Common",
-    "Path": "../../assets/Toyota_Yaris.png"
 }
 
 
