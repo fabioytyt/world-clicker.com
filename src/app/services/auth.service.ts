@@ -96,7 +96,7 @@ export class AuthService {
       this.addDataToUser(data)
       this.addUserData(data)
       // this.addInfos(data, user.uid);
-    return userRef.set(data);
+    return userRef.update(data);
   }
 
   
@@ -134,16 +134,20 @@ export class AuthService {
      // console.log(data, this.currentUser._delegate.uid);
      const user = localStorage.getItem("key")
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}`);
-     return userRef.set(data);
+     return userRef.update(data);
    }
    else if (this.currentUser) {
      console.log(data, this.currentUser._delegate.uid);
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}`);
-     return userRef.set(data);
+     return userRef.update(data);
    }
    else {
      return null;
    }
+ }
+
+ public getUserKey()  {
+  return localStorage.getItem("key");
  }
 
 
@@ -155,12 +159,12 @@ export class AuthService {
       // console.log(data, this.currentUser._delegate.uid);
       const user = localStorage.getItem("key")
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}/data/data`);
-      return userRef.set(data);
+      return userRef.update(data);
     }
     else if (this.currentUser) {
       console.log(data, this.currentUser._delegate.uid);
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}/data/data`);
-      return userRef.set(data);
+      return userRef.update(data);
     }
     else {
       return null;

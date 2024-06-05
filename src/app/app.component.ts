@@ -83,6 +83,8 @@ export class AppComponent implements OnInit{
     })
     // if(!this.oldDate){
     console.log(this.auth.user$, this.auth.currentUser, this.auth.userData.subscribe((e) => {
+      console.log("update:");
+      
 console.log(e,e.update);
 
 var seconds = new Date().getTime() / 1000;
