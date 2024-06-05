@@ -714,6 +714,16 @@ public generateRandomCars() {
       this.hideMapNow("carFound");
       this.map.removeLayer(mark);
       this.map.removeLayer(circle);
+
+      this.allGarages.forEach( (item) => {
+        if(this.getDistance([item.lat, item.lng],[calcLat, calcLng]) < 100) {
+          this.cars++;
+      localStorage.setItem("carcount", this.cars.toString())
+      this.hideMapNow("carFound");
+      this.map.removeLayer(mark);
+      this.map.removeLayer(circle);
+        }
+      } )
       }
      })
       
@@ -751,7 +761,18 @@ public genNewCars() {
       this.hideMapNow("carFound");
       this.map.removeLayer(mark2);
       this.map.removeLayer(circle2);
+      
       }
+
+      this.allGarages.forEach( (item) => {
+        if(this.getDistance([item.lat, item.lng],[calcLat, calcLng]) < 100) {
+          this.cars++;
+      localStorage.setItem("carcount", this.cars.toString())
+      this.hideMapNow("carFound");
+      this.map.removeLayer(mark2);
+      this.map.removeLayer(circle2);
+        }
+      } )
      })
       
       console.log(this.randomCars);
