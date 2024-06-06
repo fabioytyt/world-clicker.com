@@ -1,4 +1,4 @@
-@if(key && false) {<div class="App">
+@if(key ) {<div class="App">
   <!-- <app-navbar></app-navbar> -->
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
@@ -31,7 +31,7 @@
     }
   @else if(!visible && currentVisible == "garageClick" ){
     
-   <app-garage (addCoins)="addSingleCoin($event)"></app-garage>
+   <app-garage (addCoins)="addSingleCoin($event)" (hideMap)="switchVisibile($event)"></app-garage>
     }
 
 </div>
@@ -71,7 +71,7 @@
     </div>
   </button> -->
 
-  <app-garage (addCoins)="addSingleCoin($event)" (hideMap)="switchVisibile($event)"></app-garage>
+  <!-- <app-garage (addCoins)="addSingleCoin($event)" (hideMap)="switchVisibile($event)"></app-garage> -->
   
 
 

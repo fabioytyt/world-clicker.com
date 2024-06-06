@@ -46,19 +46,19 @@ export class AppComponent implements OnInit{
    }, 500)
    
   }
-  public addSingleCoin(coins) {
-    this.coins = this.coins + coins;
+  public addSingleCoin(coins: number) {
+    this.coins = this.coins + +coins;
     localStorage.setItem("coins", this.coins.toString())
 
   }
   public key = localStorage.getItem("key");
   title = 'world-clicker';
   public currentVisible;
-  public cps = 0;
-  public addCoins(coin) {
+  public cps: number = 0;
+  public addCoins(coin: number) {
     // this.coins = this.coins + coin;
     console.log("coin:",coin);
-    this.cps = this.cps + coin;
+    this.cps = +this.cps + +coin;
     localStorage.setItem("cps", this.cps.toString())
 
     

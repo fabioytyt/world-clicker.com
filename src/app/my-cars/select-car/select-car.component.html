@@ -1,0 +1,37 @@
+
+<div id="carCard"  [style.display]="'block'" [style.background]="Car.Color" > 
+    <button id="closeBtn" (click)="closeClick()" >X</button>
+    <br>
+    @if (Car.Color) {
+      <br>
+    <h1  [style.color]="Car.textColor">{{Car.Name.toUpperCase()}}</h1>
+    <img [src]="Car.Path" width="80%"  >
+
+
+    <div class="container">
+      <div id="HP" [style.background]="Car.Color" [style.color]="Car.textColor">{{Car.Horsepower}} hp</div>
+      <!-- <div id="TopSpeed">{{Car.TopSpeed}}</div> -->
+      <div id="MPG"[style.background]="Car.Color" [style.color]="Car.textColor">{{Car.Miles_per_Gallon}} Miles per Gallon</div>
+      <div id="Cylinders"[style.background]="Car.Color" [style.color]="Car.textColor">{{Car.Cylinders}} Cylinders</div>
+      <div id="Acceleration"[style.background]="Car.Color" [style.color]="Car.textColor"> {{Car.Acceleration}}s 0 - 60 mp/h</div>
+      <div id="CPS"[style.background]="Car.Color" [style.color]="Car.textColor"> {{Car.CPS.toFixed(2)}} coins per second</div>
+      <div id="year"[style.background]="Car.Color" [style.color]="Car.textColor"   >
+      Year: {{Car.Year}}
+    </div>
+    </div>
+<br>
+    <!-- <p>src: {{Car.Path}}</p> -->
+    <!-- <p>Acceleration:{{Car.Acceleration}}</p> -->
+    <!-- <p>Cylinders: {{Car.Cylinders}}</p> -->
+    <!-- <p>{{Car.Name}}</p> -->
+    <!-- <p>Miles per Gallon:{{Car.Miles_per_Gallon}}</p> -->
+    <!-- <p>Displacement: {{Car.Displacement}}</p> -->
+    <!-- <p>HP:{{Car.Horsepower}}</p> -->
+    <!-- <p>Weight:{{Car.Weight_in_lbs}}</p> -->
+   
+    <!-- <p>Origin: {{Car.Origin}}</p> -->
+    <!-- <p>CPS: {{Car.CPS}}</p> -->
+    <!-- <p>rarity: {{Car.Rarity}}</p> -->
+    }
+    
+  </div>

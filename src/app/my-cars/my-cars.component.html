@@ -5,11 +5,12 @@
 </div> -->
 <!-- <br><br>
 <br><br> -->
+@if (carVisible == true) {
 <div class="container">
     @if(myCars) {
     @for(item of myCars; track item) {
 
-        <div id="car" [style.background]="item.Color">
+        <div id="car" [style.background]="item.Color" (click)="openCar(item)">
             <!-- <div class="container">
                 <div id="B"><p>B</p></div>
                 <div id="B"><p>Street</p></div>
@@ -18,6 +19,9 @@
             <br>
             <img [src]="item.Path" width="50%" height="auto"><br>
             <p>{{item.Name}}</p>
+            @if(item.level) {
+                <p>LVL: {{item.level}}</p>
+            }
         </div>
 
     }
@@ -48,3 +52,8 @@ Year
         </button>
     </div>
 </div>
+
+} @else {
+ @if(selectedCar) {   <app-select-car [Car]="selectedCar" (close)="closeSelectedCar()"></app-select-car>}
+}
+

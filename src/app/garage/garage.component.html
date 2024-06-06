@@ -20,10 +20,10 @@
         <div class="container">
             <div id="HP" [style.background]="item.Color" [style.color]="item.textColor">{{item.Horsepower}} HP  + {{item.upgradeHp}} HP</div>
             <!-- <div id="TopSpeed">{{item.TopSpeed}}</div> -->
-            <div id="MPG"[style.background]="item.Color" [style.color]="item.textColor">{{item.Miles_per_Gallon}} Miles per Gallon - {{item.upgradeGallon}} Miles</div>
+            <div id="MPG"[style.background]="item.Color" [style.color]="item.textColor">{{item.Miles_per_Gallon}} Miles per Gallon - {{item.upgradeGallon.toFixed(2)}} Miles</div>
             <div id="Cylinders"[style.background]="item.Color" [style.color]="item.textColor">{{item.Cylinders}} Cylinders</div>
-            <div id="Acceleration"[style.background]="item.Color" [style.color]="item.textColor"> {{item.Acceleration}}s 0 - 60 mp/h - {{item.upgradeZeroSixty}}s </div>
-            <div id="CPS"[style.background]="item.Color" [style.color]="item.textColor"> {{item.CPS.toFixed(2)}} cps + {{item.upgradeCPS}}</div>
+            <div id="Acceleration"[style.background]="item.Color" [style.color]="item.textColor"> {{item.Acceleration}}s 0 - 60 mp/h - {{item.upgradeZeroSixty.toFixed(2)}}s </div>
+            <div id="CPS"[style.background]="item.Color" [style.color]="item.textColor"> {{item.CPS.toFixed(2)}} cps + {{item.upgradeCPS.toFixed(2)}}</div>
             <div id="year"[style.background]="item.Color" [style.color]="item.textColor"   >
             Year: {{item.Year}}
           </div>
@@ -37,7 +37,7 @@
     </div>}
     @if (!buttonVisible) { <div class="upgradeBtn">
         <button (click)="onButtonDoneClick()">{{timeRemaining | durationFormat: 's':'hhmmss'}}</button>
-        <div id="progress" [style.width]="progress">{{timeRemaining | durationFormat: 's':'hhmmss'}}</div>
+        <!-- <div id="progress" [style.width]="progress ">{{timeRemaining | durationFormat: 's':'hhmmss'}}</div> -->
     </div>}
 }
 </div>
@@ -46,3 +46,12 @@
 @if (selectVisible) {
     <app-select-car (selectCar)="selection($event)"></app-select-car>
 }
+
+<div id="close" (click)="onCloseClick()">
+    <div class="closeBtn" (click)="onCloseClick()">
+        <button (click)="onCloseClick()">
+            <img src="../../assets/CloseBtn.png" width="40px" height="40px">
+            <!-- Button -->
+        </button>
+    </div>
+</div>

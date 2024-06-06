@@ -33,10 +33,31 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
     this.garagePrice = JSON.parse(localStorage.getItem("garagePrice"))
     this.allGarages.push(...garages)
     console.log(garages);
+    
     setTimeout(() => {
       garages.forEach( (e) => {
         console.log(e);      
-        let garageMarker2 = L.marker([e.lat,e.lng], {icon: this.garageIcon}).addTo(this.map)
+        let garageMarker2 = L.marker([e.lat,e.lng], {icon: this.garageIcon}).addTo(this.map).on("click", ((a) => {
+          console.log(a, a.latlng, this.currentPos);
+          
+          
+            console.log();
+            let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [this.currentPos.coords.latitude, this.currentPos.coords.longitude])
+            console.log('distance:',distance);
+            // console.log('distance');
+            if(distance < 100 ) {
+              this.hideMap.emit("garageClick");
+            }
+            // if(distance < 101) {
+              
+            // }
+          
+          
+          // console.log( [a.latlng.lat, a.latlng.lng], [current.coords.latitude, current.coords.longitude]);
+         
+            
+         
+        }) )
         let circle2 = L.circle([e.lat,e.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
       })
     }, 500);
@@ -146,7 +167,18 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
             
             localStorage.setItem("garages", JSON.stringify(this.allGarages))
             localStorage.setItem("garagePrice", JSON.stringify(this.garagePrice));
-            let garageMarker = L.marker([e.latlng.lat,e.latlng.lng], {icon: this.garageIcon}).addTo(this.map).on("click", (() => {
+            let garageMarker = L.marker([e.latlng.lat,e.latlng.lng], {icon: this.garageIcon}).addTo(this.map).on("click", ((a) => {
+              console.log(a, a.latlng, this.currentPos);
+              
+              
+                console.log();
+                let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [this.currentPos.coords.latitude, this.currentPos.coords.longitude])
+                console.log('distance:',distance);
+                // console.log('distance');
+                if(distance < 100 ) {
+                  this.hideMap.emit("garageClick");
+                }
+                
             }) )
             let circle = L.circle([e.latlng.lat,e.latlng.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
             
@@ -174,7 +206,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       // this.generateRandomCars();
 setTimeout(() => {
 
-   L.marker([49.3,10.5833333], {icon: this.repairShop}).addTo(this.map).on("click", this.onRepairShopClick)
+   L.marker([49.3,10.5833333], {icon: this.repairShop}).addTo(this.map).on("click", (() => {}))
   
   
 }, 5000);
@@ -182,7 +214,7 @@ setTimeout(() => {
 
 setTimeout(() => {
  
-this.currentPos = null;
+// this.currentPos = null;
 // this.map.removeLayer(this.currentPos)
 //  this.currentPos = (L.marker([lat,lng], {icon: this.manCar}).addTo(this.map));
   // this.map.addLayer(this.carMarkers)
@@ -250,6 +282,11 @@ this.currentPos = null;
     auth.userData.subscribe((e) => {
       console.log("userData:",e);
       this.speedMap = e.speedMap;
+    })
+
+    navigator.geolocation.getCurrentPosition((e) => {
+      console.log('here',e);
+      this.currentPos = e
     })
   }
 
