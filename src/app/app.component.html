@@ -1,4 +1,4 @@
-@if(key) {<div class="App">
+@if(key && false) {<div class="App">
   <!-- <app-navbar></app-navbar> -->
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
@@ -29,8 +29,8 @@
     {{speed}}
    <app-when-moving></app-when-moving>
     }
-  @else if(!visible && currentVisible == "garageClick"){
-    {{speed}}
+  @else if(!visible && currentVisible == "garageClick" ){
+    
    <app-garage (addCoins)="addSingleCoin($event)"></app-garage>
     }
 
@@ -71,7 +71,7 @@
     </div>
   </button> -->
 
-
+  <app-garage (addCoins)="addSingleCoin($event)" (hideMap)="switchVisibile($event)"></app-garage>
   
 
 

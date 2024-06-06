@@ -79,3 +79,15 @@ $legendary: #FAD94B;
   padding-top: 7.5px;
   
 }
+
+#progress {
+  // width: 80%;
+  height: 10vh;
+  position: relative;
+  top: -10vh;
+  left: calc(50% - 185px);
+  border-radius: 50px;
+  background-color: red;
+  border: 1px blue solid;
+  z-index: 1;
+}

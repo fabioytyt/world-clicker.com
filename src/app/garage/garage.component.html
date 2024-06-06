@@ -36,7 +36,8 @@
         <button (click)="onUpgradeCLick()">Upgrade Price: {{item.upgradePrice | currency}} Time: {{item.upgradeTime | durationFormat: 's':'hhmmss'}}</button>
     </div>}
     @if (!buttonVisible) { <div class="upgradeBtn">
-        <button>{{timeRemaining | durationFormat: 's':'hhmmss'}}</button>
+        <button (click)="onButtonDoneClick()">{{timeRemaining | durationFormat: 's':'hhmmss'}}</button>
+        <div id="progress" [style.width]="progress">{{timeRemaining | durationFormat: 's':'hhmmss'}}</div>
     </div>}
 }
 </div>

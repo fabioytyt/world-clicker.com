@@ -13,6 +13,7 @@ import { DurationFormatPipe } from '../duration-format.pipe';
 })
 export class GarageComponent implements OnInit {
   @Output() public addCoins= new EventEmitter();
+  @Output() public hideMap = new EventEmitter();
   public buttonVisible = true;
   ngOnInit(): void {
     if(localStorage.getItem("upgrade") && localStorage.getItem("upgradeStart")) {
@@ -47,6 +48,10 @@ export class GarageComponent implements OnInit {
         setTimeout(() => {
           cars.splice(this.selectedIndex, 1);
           console.log(cars);
+          cars.push(this.item)
+          let cps = localStorage.getItem("cps")
+          cps = cps + this.item.upgradeCPS;
+          localStorage.setItem("cps", cps)
           localStorage.setItem("mycars",cars)
         }, 500);
         
@@ -56,6 +61,10 @@ export class GarageComponent implements OnInit {
     }, 500)
 
   }
+public onButtonDoneClick() {
+  this.hideMap.emit("exit")
+}
+
   public selectedIndex;
   public timeRemaining;
   public selectedCar;
@@ -72,7 +81,14 @@ export class GarageComponent implements OnInit {
     console.log(e);
     this.item = e;
     this.upgradeValues();
+    if(this.timeRemaining > 0) {
+    this.progress= (this.timeRemaining / 1000 + '%');
+    }
+    else {
+      this.progress= '80%'
+    }
   }
+  public progress; 
   public onUpgradeCLick() {
     if(localStorage.getItem("coins") > this.item.upgradePrice) {
       if(this.item) {  localStorage.setItem("upgrade", JSON.stringify(this.item))}
