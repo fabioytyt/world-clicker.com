@@ -60,6 +60,8 @@ export class AppComponent implements OnInit{
   }
   public oldDate;
   public ngOnInit(): void {
+            // this.switchVisibile("whenMoving");
+
     this.myCars = JSON.parse(localStorage.getItem("mycars"))
     navigator.geolocation.watchPosition((e) => {e
       // speed in m/s

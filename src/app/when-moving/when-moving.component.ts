@@ -17,10 +17,17 @@ import { PrettyjsonPipe } from '../prettyjson.pipe';
   styleUrl: './when-moving.component.scss'
 })
 export class WhenMovingComponent implements OnInit{
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService) {
+    this.auth.userData.subscribe((e) => {
+      console.log("userData:",e);
+      this.speedMap = e.speedMap;
+      
+    })  
+  }
 
   ngOnInit() {
 setInterval( () => {
+ let key = localStorage.getItem("key")
 
   // this.gaugeValue = Math.random() * 300
 }, 500)
@@ -32,7 +39,8 @@ setInterval( () => {
         this.speedMap.push({
           lat: e.coords.latitude,
           lng: e.coords.longitude,
-          speed: e.coords.speed
+          speed: e.coords.speed,
+          date: new Date()
         })
       }
     })
