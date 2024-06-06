@@ -1,4 +1,4 @@
-@if(key ) {<div class="App">
+@if(key) {<div class="App">
   <!-- <app-navbar></app-navbar> -->
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
@@ -29,6 +29,10 @@
     {{speed}}
    <app-when-moving></app-when-moving>
     }
+  @else if(!visible && currentVisible == "garageClick"){
+    {{speed}}
+   <app-garage (addCoins)="addSingleCoin($event)"></app-garage>
+    }
 
 </div>
 
@@ -47,9 +51,9 @@
 
 </div>
 
-<ng-template #login>
+<ng-template #login >
   <!-- <button class="button" (click)="signIn()">Login</button><br><br> -->
-
+<!-- 
   <button class="gsi-material-button" (click)="signIn()">
     <div class="gsi-material-button-state"></div>
     <div class="gsi-material-button-content-wrapper">
@@ -65,7 +69,11 @@
       <span class="gsi-material-button-contents">Sign in with Google</span>
       <span style="display: none;">Sign in with Google</span>
     </div>
-  </button>
+  </button> -->
+
+
+  
+
 
   <!-- @for( item of myCars; track item) {
   {{item | prettyjson}} <br>

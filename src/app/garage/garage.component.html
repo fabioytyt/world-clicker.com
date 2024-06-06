@@ -1,0 +1,47 @@
+@if (!selectVisible) {
+<div>
+    <p>Choose a car to upgrade</p>
+    <div class="selectCar" (click)="onSelectClick()">
+@if(item) {
+        <div id="car" [style.background]="item.Color" [style.height] = "'100%'">
+            <!-- <div class="container">
+                <div id="B"><p>B</p></div>
+                <div id="B"><p>Street</p></div>
+                <div id="B"><p>Lv. 12</p></div>
+            </div> -->
+            <br>
+            <img [src]="item.Path" width="50%" height="auto"><br>
+            <p>{{item.Name}}</p>
+        </div>}
+
+    </div>
+    @if (item) {
+    <div class="upgrades">
+        <div class="container">
+            <div id="HP" [style.background]="item.Color" [style.color]="item.textColor">{{item.Horsepower}} HP  + {{item.upgradeHp}} HP</div>
+            <!-- <div id="TopSpeed">{{item.TopSpeed}}</div> -->
+            <div id="MPG"[style.background]="item.Color" [style.color]="item.textColor">{{item.Miles_per_Gallon}} Miles per Gallon - {{item.upgradeGallon}} Miles</div>
+            <div id="Cylinders"[style.background]="item.Color" [style.color]="item.textColor">{{item.Cylinders}} Cylinders</div>
+            <div id="Acceleration"[style.background]="item.Color" [style.color]="item.textColor"> {{item.Acceleration}}s 0 - 60 mp/h - {{item.upgradeZeroSixty}}s </div>
+            <div id="CPS"[style.background]="item.Color" [style.color]="item.textColor"> {{item.CPS.toFixed(2)}} cps + {{item.upgradeCPS}}</div>
+            <div id="year"[style.background]="item.Color" [style.color]="item.textColor"   >
+            Year: {{item.Year}}
+          </div>
+          </div>
+    </div>
+
+    <div class="level"></div>
+
+   @if (buttonVisible) { <div class="upgradeBtn">
+        <button (click)="onUpgradeCLick()">Upgrade Price: {{item.upgradePrice | currency}} Time: {{item.upgradeTime | durationFormat: 's':'hhmmss'}}</button>
+    </div>}
+    @if (!buttonVisible) { <div class="upgradeBtn">
+        <button>{{timeRemaining | durationFormat: 's':'hhmmss'}}</button>
+    </div>}
+}
+</div>
+}
+
+@if (selectVisible) {
+    <app-select-car (selectCar)="selection($event)"></app-select-car>
+}

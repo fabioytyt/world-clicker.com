@@ -20,13 +20,14 @@ import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WhenMovingComponent } from './when-moving/when-moving.component';
 import { PrettyjsonPipe } from './prettyjson.pipe';
+import { GarageComponent } from './garage/garage.component';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe],
+  imports: [GarageComponent,RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -45,6 +46,11 @@ export class AppComponent implements OnInit{
    }, 500)
    
   }
+  public addSingleCoin(coins) {
+    this.coins = this.coins + coins;
+    localStorage.setItem("coins", this.coins.toString())
+
+  }
   public key = localStorage.getItem("key");
   title = 'world-clicker';
   public currentVisible;
@@ -58,6 +64,8 @@ export class AppComponent implements OnInit{
     
 
   }
+  
+
   public oldDate;
   public ngOnInit(): void {
             // this.switchVisibile("whenMoving");
