@@ -18,6 +18,7 @@
     @if (item) {
     <div class="upgrades">
         <div class="container">
+            @if(upgradeClicked) {
             <div id="HP" [style.background]="item.Color" [style.color]="item.textColor">{{item.Horsepower}} HP  + {{item.upgradeHp}} HP</div>
             <!-- <div id="TopSpeed">{{item.TopSpeed}}</div> -->
             <div id="MPG"[style.background]="item.Color" [style.color]="item.textColor">{{item.Miles_per_Gallon}} Miles per Gallon - {{item.upgradeGallon.toFixed(2)}} Miles</div>
@@ -27,6 +28,16 @@
             <div id="year"[style.background]="item.Color" [style.color]="item.textColor"   >
             Year: {{item.Year}}
           </div>
+        } @else {
+            <div id="HP" [style.background]="item.Color" [style.color]="item.textColor">{{item.Horsepower}} HP </div>
+            <!-- <div id="TopSpeed">{{item.TopSpeed}}</div> -->
+            <div id="MPG"[style.background]="item.Color" [style.color]="item.textColor">{{item.Miles_per_Gallon}} Miles per Gallon</div>
+            <div id="Cylinders"[style.background]="item.Color" [style.color]="item.textColor">{{item.Cylinders}} Cylinders</div>
+            <div id="Acceleration"[style.background]="item.Color" [style.color]="item.textColor"> {{item.Acceleration}}s 0 - 60 mp/h </div>
+            <div id="CPS"[style.background]="item.Color" [style.color]="item.textColor"> {{item.CPS.toFixed(2)}} cps </div>
+            <div id="year"[style.background]="item.Color" [style.color]="item.textColor"   >
+            Year:{{item.Year}} </div>
+        }
           </div>
     </div>
 

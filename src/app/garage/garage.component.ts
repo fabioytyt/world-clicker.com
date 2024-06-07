@@ -100,7 +100,7 @@ export class GarageComponent implements OnInit {
   }
 public onButtonDoneClick() {
   console.log('done');
-
+  this.upgradeClicked = false;
 
   
   if(this.timeRemaining <= 0) {
@@ -138,7 +138,9 @@ public onButtonDoneClick() {
     // }
   }
   public progress = '90%'; 
+  public upgradeClicked = false;
   public onUpgradeCLick() {
+    this.upgradeClicked = true
     if(localStorage.getItem("coins") > this.item.upgradePrice) {
       if(this.item) {  localStorage.setItem("upgrade", JSON.stringify(this.item))}
         localStorage.setItem("upgradeStart", JSON.stringify(new Date))
