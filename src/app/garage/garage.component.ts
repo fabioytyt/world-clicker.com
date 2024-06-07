@@ -146,12 +146,12 @@ public onButtonDoneClick() {
         this.buttonVisible = false
       if(this.item.level) {
         this.item = {
-          Acceleration: this.item.Acceleration,
-          CPS: this.item.CPS,
+          Acceleration: this.item.Acceleration - this.item.upgradeZeroSixty,
+          CPS: this.item.CPS + this.item.upgradeCPS,
           Color: this.item.Color,
           Cylinders: this.item.Cylinders,
           Displacement: this.item.Displacement,
-          Horsepower: this.item.Horsepower,
+          Horsepower: this.item.Horsepower + this.item.upgradeHp,
           Miles_per_Gallon: this.item.Miles_per_Gallon,
           Name: this.item.Name,
           Origin: this.item.Origin,
@@ -170,13 +170,13 @@ public onButtonDoneClick() {
         }}
                 else {
           this.item = {
-            Acceleration: this.item.Acceleration,
-            CPS: this.item.CPS,
+            Acceleration: this.item.Acceleration - this.item.Acceleration * 0.05,
+            CPS: this.item.CPS + ((+this.item.Horsepower + +this.item.Horsepower * 0.25) * (+this.item.Acceleration - +(this.item.Acceleration * 0.25)) * ((+this.item.Cylinders) / 1000)),
             Color: this.item.Color,
             Cylinders: this.item.Cylinders,
             Displacement: this.item.Displacement,
-            Horsepower: this.item.Horsepower,
-            Miles_per_Gallon: this.item.Miles_per_Gallon,
+            Horsepower: this.item.Horsepower + this.item.Horsepower * 0.25,
+            Miles_per_Gallon: this.item.Miles_per_Gallon + this.item.Miles_per_Gallon * 0.15,
             Name: this.item.Name,
             Origin: this.item.Origin,
             Path:this.item.Path,
@@ -185,7 +185,7 @@ public onButtonDoneClick() {
             Weight_in_lbs: this.item.Weight_in_lbs,
             Year: this.item.Year,
             textColor: this.item.textColor,
-            upgradeHp: this.item.Horsepower * 0.25,
+            upgradeHp: this.item.Horsepower+ this.item.Horsepower * 0.25,
             upgradeGallon: this.item.Miles_per_Gallon * 0.15,
             upgradeCPS: ((+this.item.Horsepower + +this.item.Horsepower * 0.25) * (+this.item.Acceleration - +(this.item.Acceleration * 0.25)) * ((+this.item.Cylinders) / 1000)),
             upgradeZeroSixty: (this.item.Acceleration * 0.05),
@@ -264,8 +264,8 @@ public onButtonDoneClick() {
         upgradeGallon: this.item.Miles_per_Gallon * 0.15,
         upgradeCPS: ((+this.item.Horsepower + +this.item.Horsepower * 0.25) * (+this.item.Acceleration - +(this.item.Acceleration * 0.25)) * (+this.item.Cylinders) / 1000),
         upgradeZeroSixty: (this.item.Acceleration * 0.25),
-        upgradeTime: (28800),
-        upgradePrice: 250000,
+        upgradeTime: this.item.upgradeTime * 2,
+        upgradePrice: this.item.upgradePrice * 1.5,
         level: this.item.level + 1
       }}
               else {
