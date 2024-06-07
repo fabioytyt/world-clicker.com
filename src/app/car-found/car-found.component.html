@@ -12,7 +12,7 @@
 
     <div class="container">
       <div id="HP" [style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Horsepower}} hp</div>
-      <!-- <div id="TopSpeed">{{randomCar.TopSpeed}}</div> -->
+      <!-- <div id="TopSpeed">{{randomCar.TopSpeed.toFixed(2)}}</div> -->
       <div id="MPG"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Miles_per_Gallon}} Miles per Gallon</div>
       <div id="Cylinders"[style.background]="randomCar.Color" [style.color]="randomCar.textColor">{{randomCar.Cylinders}} Cylinders</div>
       <div id="Acceleration"[style.background]="randomCar.Color" [style.color]="randomCar.textColor"> {{randomCar.Acceleration}}s 0 - 60 mp/h</div>
