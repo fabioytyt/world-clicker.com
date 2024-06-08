@@ -15,7 +15,7 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthService } from './services/auth.service';
 import { AngularFireModule } from '@angular/fire/compat';
-import { CommonModule, JsonPipe } from '@angular/common';
+import { CommonModule, HashLocationStrategy, JsonPipe, LocationStrategy } from '@angular/common';
 import { FriendsComponent } from './friends/friends.component';
 import { ProfileComponent } from './profile/profile.component';
 import { WhenMovingComponent } from './when-moving/when-moving.component';
@@ -29,7 +29,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GarageComponent,RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe, RouterModule, AngularFirestoreModule],
+  imports: [
+    GarageComponent,RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe,
+     RouterModule,AngularFirestoreModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

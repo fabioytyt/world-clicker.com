@@ -4,6 +4,7 @@ import { CurrencyPipe } from '../currency.pipe';
 import { CommonModule } from '@angular/common';
 import { DurationFormatPipe } from '../duration-format.pipe';
 import { Router } from '@angular/router';
+import { CoinsService } from '../coins.service';
 
 @Component({
   selector: 'app-garage',
@@ -13,12 +14,14 @@ import { Router } from '@angular/router';
   styleUrl: './garage.component.scss'
 })
 export class GarageComponent implements OnInit {
-  @Output() public addCoins= new EventEmitter();
+   public addCoins(a) {
+    this.coin.addSingleCoin(a);
+   }
   public hideMap(a) {
     this.router.navigate([a]);
   }
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public coin: CoinsService) {
 
   }
 
@@ -152,7 +155,7 @@ public onButtonDoneClick() {
     if(localStorage.getItem("coins") > this.item.upgradePrice) {
       if(this.item) {  localStorage.setItem("upgrade", JSON.stringify(this.item))}
         localStorage.setItem("upgradeStart", JSON.stringify(new Date))
-        this.addCoins.emit(-1 * this.item.upgradePrice)
+        this.addCoins(-1 * this.item.upgradePrice)
         this.buttonVisible = false
       if(this.item.level) {
         this.item = {
