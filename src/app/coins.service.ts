@@ -12,6 +12,16 @@ export class CoinsService implements OnInit{
   public coins: number = 0;
   
   constructor(public auth: AuthService) { 
+
+  
+     
+      // this.auth.getDataFromUser((localStorage.getItem("key"))).subscribe((data: any) => {
+      //   console.log('here1',data[0]);
+      //   this.coins = data[0].coins;
+      //   localStorage.setItem("coins", this.coins.toString())
+      // }).unsubscribe()
+    
+
     if(localStorage.getItem("coins")) {
       this.coins = +localStorage.getItem("coins")
     }
