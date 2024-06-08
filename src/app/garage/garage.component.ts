@@ -3,6 +3,7 @@ import { SelectCarComponent } from './select-car/select-car.component';
 import { CurrencyPipe } from '../currency.pipe';
 import { CommonModule } from '@angular/common';
 import { DurationFormatPipe } from '../duration-format.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-garage',
@@ -13,7 +14,14 @@ import { DurationFormatPipe } from '../duration-format.pipe';
 })
 export class GarageComponent implements OnInit {
   @Output() public addCoins= new EventEmitter();
-  @Output() public hideMap = new EventEmitter();
+  public hideMap(a) {
+    this.router.navigate([a]);
+  }
+
+  constructor(public router: Router) {
+
+  }
+
   public buttonVisible = true;
   ngOnInit(): void {
     if(localStorage.getItem("upgrade") && localStorage.getItem("upgradeStart")) {
@@ -108,7 +116,7 @@ public onButtonDoneClick() {
     localStorage.removeItem("upgrade")
     localStorage.removeItem("upgradeStart")
     console.log('done');
-  this.hideMap.emit("exit")
+  this.hideMap("")
   }
   
 
@@ -301,7 +309,7 @@ public onButtonDoneClick() {
   }
   public onCloseClick() {
     
-    this.hideMap.emit("exit")      
+    this.hideMap("")      
   
 }
 }

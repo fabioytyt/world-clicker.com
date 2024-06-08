@@ -2,7 +2,7 @@
 import { first } from 'rxjs/operators'
 
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LeaflatMapComponent } from './leaflat-map/leaflat-map.component';
 import { CarFoundComponent } from './car-found/car-found.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -21,19 +21,21 @@ import { ProfileComponent } from './profile/profile.component';
 import { WhenMovingComponent } from './when-moving/when-moving.component';
 import { PrettyjsonPipe } from './prettyjson.pipe';
 import { GarageComponent } from './garage/garage.component';
-
+import routes from './app.routes';
+import { CoinsService } from './coins.service';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [GarageComponent,RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe],
+  imports: [GarageComponent,RouterOutlet, LeaflatMapComponent, CarFoundComponent, NavigationComponent, MyCarsComponent, CommonModule, FriendsComponent, ProfileComponent, WhenMovingComponent, PrettyjsonPipe, RouterModule, AngularFirestoreModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, public router: Router, public coin: CoinsService) {
 
   } 
   public signIn() {
@@ -46,29 +48,30 @@ export class AppComponent implements OnInit{
    }, 500)
    
   }
-  public addSingleCoin(coins: number) {
-    this.coins = this.coins + +coins;
-    localStorage.setItem("coins", this.coins.toString())
-
-  }
+  
   public key = localStorage.getItem("key");
   title = 'world-clicker';
   public currentVisible;
-  public cps: number = 0;
-  public addCoins(coin: number) {
-    // this.coins = this.coins + coin;
-    console.log("coin:",coin);
-    this.cps = +this.cps + +coin;
-    localStorage.setItem("cps", this.cps.toString())
 
+  // public addCoins(coin: number) {
+    // this.coins = this.coins + coin;
+   
     
 
-  }
+  
   
 
   public oldDate;
   public ngOnInit(): void {
             // this.switchVisibile("whenMoving");
+
+      setInterval(() => {
+        console.log(this.coin.getCps(), 5);
+        console.log("moin");
+        
+        this.coin.addSingleCoin(this.coin.cps)
+      }, 1000)
+
 
     this.myCars = JSON.parse(localStorage.getItem("mycars"))
     navigator.geolocation.watchPosition((e) => {e
@@ -92,25 +95,9 @@ export class AppComponent implements OnInit{
      
     })
     // if(!this.oldDate){
-    console.log(this.auth.user$, this.auth.currentUser, this.auth.userData.subscribe((e) => {
-      console.log("update:");
-      
-console.log(e,e.update);
-
-var seconds = new Date().getTime() / 1000;
-// if(e.update.seconds) {
-      if(e.update) {
-        console.log(seconds, e.update, seconds - e.update);
-
-   this.coins = +localStorage.getItem("coins") + (+localStorage.getItem("cps") * (seconds - e.update)) / 2;
- console.log(this.coins);
- 
-// }
-      }
-      // this.currentVisible("whenMoving")
-    }
+    console.log(this.auth.user$, this.auth.currentUser, 
     
-    ))
+    )
     
   // };
     
@@ -118,15 +105,9 @@ var seconds = new Date().getTime() / 1000;
     // this.auth.googleSignin()
    
 
-    if(localStorage.getItem("cps")) {
-    this.cps = Math.floor(+localStorage.getItem("cps"))
-    this.coins = Math.floor(+localStorage.getItem("coins"))}
     
-    setInterval(()=> {
-      Math.floor(this.coins = this.coins + this.cps);
-      localStorage.setItem("coins", this.coins.toString())
-      
-    }, 1000)
+    
+   
     this.updateUserDat({
       myCars: JSON.parse(localStorage.getItem("mycars")),
       carcount: localStorage.getItem("carcount"),
@@ -144,7 +125,8 @@ var seconds = new Date().getTime() / 1000;
         carcount: localStorage.getItem("carcount"),
         coins: localStorage.getItem("coins"),
         cps: localStorage.getItem("cps"),
-        update: seconds
+        update: seconds,
+        user: JSON.parse(localStorage.getItem("userData"))
       })
     }, 25000)
 
@@ -153,7 +135,7 @@ var seconds = new Date().getTime() / 1000;
     // }, 500);
     
   }
-  public coins = 0;
+  // public coins = 0;
   public myCars: [];
   public updateUserDat( data: {}){
     this.auth.addDataToUser(data)
@@ -167,11 +149,13 @@ var seconds = new Date().getTime() / 1000;
     if(currentVisible == "exit") {
       this.visible = true;
       this.currentVisible = "exit"
+      this.router.navigate(['']);
     }
 
     if(currentVisible != "exit") {
       this.visible = false;
       this.currentVisible = currentVisible
+      this.router.navigate([currentVisible]);
     }
     console.log(currentVisible);
     

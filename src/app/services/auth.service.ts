@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { getAuth, signInWithPopup, GoogleAuthProvider, Auth} from "firebase/auth";
@@ -7,7 +7,8 @@ import { switchMap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {AngularFirestoreDocument, AngularFirestore} from '@angular/fire/compat/firestore' 
 import * as firebase from "firebase/app"
-import { Firestore, collection, doc, setDoc } from 'firebase/firestore/lite';
+import { Firestore,  addDoc,  collection,  doc, setDoc } from 'firebase/firestore/lite';
+import { FirestoreError } from 'firebase/firestore';
 // import  auth from 'firebase/compat/app';
 
 
@@ -51,7 +52,7 @@ export class AuthService {
    
   }
   public currentUser;
-  async googleSignin() {
+  public async googleSignin() {
     const provider = new GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
     this.currentUser = credential.user;
@@ -60,6 +61,7 @@ export class AuthService {
     localStorage.setItem("userData", JSON.stringify(credential.user))
     this.updateUserData(credential.user);
     this.addDataToUser({user: credential.user});
+    this.addAllUsers({user: credential.user})
     return this.updateUserData(credential.user);
   }
 
@@ -78,6 +80,18 @@ export class AuthService {
       appId: "1:1098866553749:web:16959403ee329378733c9c",
       measurementId: "G-YR90LWTHZ2"
     };
+    // public firestore = inject(Firestore)
+    public addAllUsers(data) {
+      // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`allUsers`);
+      // return userRef.set(data, {merge: true});
+
+      // let Datacollection = collection(this.firestore, 'userData')
+      // const prmise = addDoc(Datacollection, data)
+
+
+      
+    }
+
   public updateUserData(user) {
     console.log("update User Data");
     
@@ -173,7 +187,7 @@ export class AuthService {
   }
 
   public getDataFromUser(user) {
-    return this.afs.collection(`users/${user}/data/data`, ref => ref.where('uid', '==', user)).valueChanges();
+    return this.afs.collection(`users/${user}/data/`, ref => ref).valueChanges();
   }
 
 

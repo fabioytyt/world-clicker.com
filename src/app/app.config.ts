@@ -1,9 +1,14 @@
-import { ApplicationConfig, importProvidersFrom } from '@angular/core';
+import { ApplicationConfig, InjectionToken, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
+// import { AngularFirestore } from '@angular/fire/firestore';
+// import {provideFirestore} from 
 import { routes } from './app.routes';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { AngularFireModule } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat'; 
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBIOLzTWv2k0zlLq9irCW51C0s4cL2erzE",
@@ -19,7 +24,13 @@ const firebaseConfig = {
 export const appConfig: ApplicationConfig = {
   providers: [
       provideRouter(routes),
-      importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig)),
+      provideFirebaseApp(() => initializeApp(firebaseConfig)), 
+      provideAuth(() => getAuth()), 
+      provideAnalytics(() => getAnalytics()), ScreenTrackingService, UserTrackingService,
+      provideFirestore(() => getFirestore()),
+      { provide: FIREBASE_OPTIONS, useValue: firebaseConfig }
+      // provideFirebaseApp(() => initializeApp(firebaseConfig)),
+      // provideFirestore(() => getFirestore()),
     ]
 
 

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CarJsonService } from '../services/car-json.service';
+import { Router } from '@angular/router';
+import { CoinsService } from '../coins.service';
 
 @Component({
   selector: 'app-car-found',
@@ -9,18 +11,24 @@ import { CarJsonService } from '../services/car-json.service';
   styleUrl: './car-found.component.scss'
 })
 export class CarFoundComponent implements OnInit{
-  @Output() public hideMap: EventEmitter<string> = new EventEmitter<string>();
-  @Output() public addCoins: EventEmitter<number> = new EventEmitter<number>();
+
+    public hideMap(a) {
+      this.router.navigate([a]);
+    }
+   
+   public addCoins(a) {
+    this.coin.addCpsToCoins(a)
+   }
 
   public addCoin(coins) {
     console.log(coins);
-    this.addCoins.emit(Math.floor(coins));
+    this.addCoins(Math.floor(coins));
   }
 
   public CPS: number= 0;
 
   public onCloseClick() {
-    this.hideMap.emit("exit");
+    this.hideMap("");
   }
   public randomCar: any = {
     car: "Car12",
@@ -51,7 +59,7 @@ export class CarFoundComponent implements OnInit{
   // const requestOptions =
   
 
-  constructor(public car:CarJsonService) {
+  constructor(public car:CarJsonService, public router: Router, public coin: CoinsService) {
     this.allCars = this.car.cars;
   }
   public getAllCars() {

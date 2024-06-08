@@ -4,6 +4,8 @@ import { map } from 'rxjs';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { CurrencyPipe } from '../currency.pipe';
+import { Router } from '@angular/router';
+import { CoinsService } from '../coins.service';
 
 @Component({
   selector: 'app-leaflat-map',
@@ -14,12 +16,22 @@ import { CurrencyPipe } from '../currency.pipe';
 })
 export class LeaflatMapComponent implements AfterViewInit, OnInit{
 
-  @Output() public hideMap= new EventEmitter();
+   public hideMap(a) {
+    this.router.navigate([a]);
+   }
   @Input() public coins: number = 0;
 
   public lat 
   public lng
   public ngOnInit(): void {
+
+
+    setInterval(() => {
+      this.coins = this.coinService.getCoins();
+      console.log("a", this.coinService.getCoins());
+      
+    }, 999)
+
     // setInterval(() => {
     //   this.auth.addDataToUser({
     //     speedMap:  [{},{},{}]
@@ -42,12 +54,25 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
           
           
             console.log();
+            if(this.currentPos) {
             let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [this.currentPos.coords.latitude, this.currentPos.coords.longitude])
             console.log('distance:',distance);
             // console.log('distance');
             if(distance < 100 ) {
-              this.hideMap.emit("garageClick");
+              this.hideMap("garageClick");
+              this.router.navigate(['garageClick']);
             }
+          } else {
+            navigator.geolocation.getCurrentPosition((b) => {
+              let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [b.coords.latitude, b.coords.longitude])
+              console.log('distance:',distance, b);
+              // console.log('distance');
+              if(distance < 100 ) {
+                this.hideMap("garageClick");
+                this.router.navigate(['garageClick']);
+              }
+            })
+          }
             // if(distance < 101) {
               
             // }
@@ -64,9 +89,11 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   }
 
   this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((data) => {
-    console.log('here:',data);
+    console.log('here:',data[0]);
     
   })
+ 
+  
 
   }
 
@@ -116,8 +143,16 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
     //   both[0] = lat;
     //   both[1] = lng;
     navigator.geolocation.getCurrentPosition((a) => {console.log(a.coords);
-      this.moveMap([a.coords.latitude, a.coords.longitude])
+      this.moveMap([a.coords.latitude, a.coords.longitude]);
+      
     });
+
+    setTimeout(() => {
+      navigator.geolocation.getCurrentPosition((a) => {console.log(a.coords);
+        this.moveMap([a.coords.latitude, a.coords.longitude]);
+      });
+      }, 5000)
+
     
     this.map = L.map('map', {
       center: [49.2,10.5],
@@ -176,7 +211,8 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
                 console.log('distance:',distance);
                 // console.log('distance');
                 if(distance < 100 ) {
-                  this.hideMap.emit("garageClick");
+                  this.hideMap("garageClick");
+                  this.router.navigate(['garageClick']);
                 }
                 
             }) )
@@ -262,7 +298,7 @@ setTimeout(() => {
   };
 
   public user = JSON.parse(localStorage.getItem("userData"));
-  constructor(public auth: AuthService) { 
+  constructor(public auth: AuthService, public router: Router, public coinService: CoinsService) { 
 
     if(localStorage.getItem("userData")) {
       console.log(JSON.parse(localStorage.getItem("userData")));
@@ -291,11 +327,13 @@ setTimeout(() => {
   }
 
   public onUserClick() {
-    this.hideMap.emit('garage')
+    this.hideMap('garage')
+    this.router.navigate(['garage']);
   }
 
   public hideMapNow(a) {
-     this.hideMap.emit(a);
+     this.hideMap(a);
+     this.router.navigate([a]);
   }
   // public onCarClick() {
     
@@ -749,6 +787,7 @@ public generateRandomCars() {
       this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
       this.hideMapNow("carFound");
+      this.router.navigate(['carFound']);
       this.map.removeLayer(mark);
       this.map.removeLayer(circle);
 
@@ -757,6 +796,7 @@ public generateRandomCars() {
           this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
       this.hideMapNow("carFound");
+      this.router.navigate(['carFound']);
       this.map.removeLayer(mark);
       this.map.removeLayer(circle);
         }
@@ -796,6 +836,7 @@ public genNewCars() {
       this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
       this.hideMapNow("carFound");
+      this.router.navigate(['carFound']);
       this.map.removeLayer(mark2);
       this.map.removeLayer(circle2);
       
@@ -806,6 +847,7 @@ public genNewCars() {
           this.cars++;
       localStorage.setItem("carcount", this.cars.toString())
       this.hideMapNow("carFound");
+      this.router.navigate(['carFound']);
       this.map.removeLayer(mark2);
       this.map.removeLayer(circle2);
         }

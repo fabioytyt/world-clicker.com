@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { DoubleClickZoomHandler } from '@maptiler/sdk';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -10,7 +11,11 @@ import { DoubleClickZoomHandler } from '@maptiler/sdk';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit {
-  @Output() public switchVisible = new EventEmitter();
+  public switchVisible(a) {
+  
+      this.router.navigate([a]);
+    
+  }
 
 ngOnInit(): void {
   // this.switchVisible.emit({"a", "b"})
@@ -20,11 +25,12 @@ public image;
 
 public onImageClick() {
   console.log("click");
-  this.switchVisible.emit({a:'a', currentVisible: 'garage'})
+  this.switchVisible('')
 }
 
 constructor(
-  public auth: AuthService
+  public auth: AuthService,
+  public router: Router
 ) {
   this.user = auth.currentUser;
   console.log(auth, auth.user$);

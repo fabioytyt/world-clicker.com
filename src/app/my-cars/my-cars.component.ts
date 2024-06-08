@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SelectCarComponent } from './select-car/select-car.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-cars',
@@ -9,12 +10,16 @@ import { SelectCarComponent } from './select-car/select-car.component';
   styleUrl: './my-cars.component.scss'
 })
 export class MyCarsComponent implements OnInit{
-  @Output() public hideMap= new EventEmitter();
+  public hideMap(a) {
+   
+      this.router.navigate([a]);
+    
+  };
   public myCars;
-  
+  constructor(public router: Router) {}
   public onCloseClick() {
     
-      this.hideMap.emit("exit")      
+      this.hideMap("")      
     
   }
   

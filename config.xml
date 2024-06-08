@@ -8,4 +8,6 @@
     <content src="index.html" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-intent href="https://accounts.google.com/*" />
+    <allow-intent href="*" />
 </widget>

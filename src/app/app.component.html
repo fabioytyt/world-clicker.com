@@ -1,28 +1,28 @@
-@if(key ) {<div class="App">
+@if(key  && false) {<div class="App">
   <!-- <app-navbar></app-navbar> -->
   <!-- <app-map></app-map> -->
   <!-- <app-ol-map></app-ol-map> -->
-<app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile($event) " [coins]="coins"></app-leaflat-map>
+<app-leaflat-map [style.display]="visible ? 'block' : 'none'" (hideMap)="switchVisibile('') "></app-leaflat-map>
   @if (!visible && currentVisible  == "carFound") {
     <!-- <button (click)="switchVisibile('a')">Show</button> -->
-  <app-car-found (hideMap)="switchVisibile($event)" (addCoins)="addCoins($event)"></app-car-found>
+  <app-car-found (hideMap)="switchVisibile('')" ></app-car-found>
 }
 
 @if (!visible && currentVisible == "garage"){
   
-  <app-my-cars (hideMap)="switchVisibile($event)"></app-my-cars>
+  <app-my-cars (hideMap)="switchVisibile('')"></app-my-cars>
 
 <!-- <div class="push"></div> -->
 
 <!-- <app-navigation (switchVisible)="switchVisibile($event)"></app-navigation> -->
 }
 @else if (!visible && currentVisible == "profile"){
-  <app-profile (hideMap)="switchVisibile($event)"></app-profile>
+  <app-profile (hideMap)="switchVisibile('')"></app-profile>
 
 } 
 @else if(!visible && currentVisible == "friends"){
 
-  <app-friends (hideMap)="switchVisibile($event)"></app-friends>
+  <app-friends (hideMap)="switchVisibile('')"></app-friends>
   }
 
   @else if(!visible && currentVisible == "whenMoving"){
@@ -31,7 +31,7 @@
     }
   @else if(!visible && currentVisible == "garageClick" ){
     
-   <app-garage (addCoins)="addSingleCoin($event)" (hideMap)="switchVisibile($event)"></app-garage>
+   <app-garage  (hideMap)="switchVisibile('')"></app-garage>
     }
 
 </div>
@@ -40,6 +40,9 @@
 <!-- <app-navigation (switchVisible)="switchVisibile($event)"></app-navigation> -->
 
 
+}
+@if(key) {
+  <router-outlet></router-outlet>
 }
 
 @else {
@@ -83,3 +86,4 @@
 
 
 }
+

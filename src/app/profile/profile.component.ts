@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnChanges, Output } from '@angular/core';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AuthService } from '../services/auth.service';
 import { CurrencyPipe } from '../currency.pipe';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,9 @@ import { CurrencyPipe } from '../currency.pipe';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnChanges{
-  @Output() public hideMap= new EventEmitter();
+  public hideMap(a) {
+    this.router.navigate([a]);
+  }
   public ngOnChanges(changes): void {
     this.cps = +localStorage.getItem("cps")
   }
@@ -19,7 +22,7 @@ export class ProfileComponent implements OnChanges{
   public cps: number = +localStorage.getItem("cps")
 
   public user = JSON.parse(localStorage.getItem("userData"));
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, public router: Router) {
     if(localStorage.getItem("userData")) {
       console.log(JSON.parse(localStorage.getItem("userData")));
       
@@ -54,7 +57,7 @@ export class ProfileComponent implements OnChanges{
   public onCloseClick() {
     console.log("close");
     setTimeout(() => {
-      this.hideMap.emit("exit")
+      this.hideMap("")
     }, 200)
   }
 }
