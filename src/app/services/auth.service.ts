@@ -204,7 +204,7 @@ export class AuthService {
      // this.googleSignin()
      // console.log(data, this.currentUser._delegate.uid);
      const user = id;
-     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${id}/`);
+     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${id}/data/data`);
      return userRef.set(data);
   
    
