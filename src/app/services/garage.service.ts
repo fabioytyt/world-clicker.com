@@ -22,8 +22,8 @@ export class GarageService {
         // );
         let friendGarages: any[] = []
         this.authService.getDataFromUser(userId).subscribe((e:any) => {
-          console.log(e.garages, userId, e, "userSubscription");
-          friendGarages.push(...e.garages)
+          console.log(e[0].garages, userId, e[0], "userSubscription");
+          friendGarages.push(...e[0].garages)
         })
 
         console.log("friendGarage", friendGarages);
