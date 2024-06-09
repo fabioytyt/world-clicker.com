@@ -125,6 +125,8 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
 
   public addGarageMarkers() {
     this.friendGarages.forEach(garage => {
+      console.log("garage:", garage);
+      
       const lat = garage.location.lat;
       const lng = garage.location.lng;
       
