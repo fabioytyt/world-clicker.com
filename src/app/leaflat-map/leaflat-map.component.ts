@@ -104,7 +104,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
 
       console.log("user21", user);
     
-    if (user) {
+    
       this.garageService.getFriendsGarages(user.user.uid).subscribe(garages => {
         this.friendGarages = garages;
         // this.loadMap(); // Funktion zum Laden der Karte
@@ -113,7 +113,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
       });
       
-    }
+    
 
 
     // .pipe(
