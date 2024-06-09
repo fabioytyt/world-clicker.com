@@ -18,6 +18,8 @@ export class GarageService {
         const friendGarages = friendIds.map(friendId =>
           this.afs.collection(`users/${friendId}/data/data/garages`).valueChanges()
         );
+        console.log("friendGarage", friendGarages);
+        
         return combineLatest(friendGarages);
       }),
       map(garagesArray => garagesArray.flat())

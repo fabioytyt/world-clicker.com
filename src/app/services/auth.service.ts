@@ -61,6 +61,7 @@ export class AuthService {
     localStorage.setItem("userData", JSON.stringify(credential.user))
     this.updateUserData(credential.user);
     this.addDataToUser({user: credential.user});
+    this.addNotUpdateDataToUser({user: credential.user})
     this.addAllUsers({user: credential.user})
     return this.updateUserData(credential.user);
   }
@@ -185,6 +186,25 @@ export class AuthService {
       return null;
     }
   }
+
+  public addNotUpdateDataToUser(data:  {}) {
+    
+    if(localStorage.getItem("key")){
+     // this.googleSignin()
+     // console.log(data, this.currentUser._delegate.uid);
+     const user = localStorage.getItem("key")
+     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}/data/data`);
+     return userRef.set(data, {merge: true});
+   }
+   else if (this.currentUser) {
+     console.log(data, this.currentUser._delegate.uid);
+     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}/data/data`);
+     return userRef.set(data, {merge: true});
+   }
+   else {
+     return null;
+   }
+ }
 
   public getDataFromUser(user) {
     return this.afs.collection(`users/${user}/data/`, ref => ref).valueChanges();
