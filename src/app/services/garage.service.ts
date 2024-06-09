@@ -14,13 +14,14 @@ export class GarageService {
 
   getFriendsGarages(userId: string): Observable<any[]> {
     console.log("friendUser", userId);
+    let friendGarages: any[] = []
     return this.afs.collection(`users/${userId}/data/data/friends`).snapshotChanges().pipe(
       switchMap(friends => {
         // const friendIds = friends.map(friend => friend.payload.doc.id);
         // const friendGarages = friendIds.map(friendId =>
         //   this.afs.collection(`users/${friendId}/data/data`).valueChanges()
         // );
-        let friendGarages: any[] = []
+        
         this.authService.getDataFromUser(userId).subscribe((e:any) => {
           console.log(e[0].garages, userId, e[0], "userSubscription");
           friendGarages.push(...e[0].garages)
