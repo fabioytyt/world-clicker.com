@@ -98,9 +98,11 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   })
  
 
-  
-    let user = JSON.parse(localStorage.getItem("key"))
-    console.log("user21", user);
+    let user;
+     this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((e) => {
+      user = e
+
+      console.log("user21", user);
     
     if (user) {
       this.garageService.getFriendsGarages(user.uid).pipe(
@@ -111,6 +113,9 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
       });
     }
+
+    })
+    
   
 
   
