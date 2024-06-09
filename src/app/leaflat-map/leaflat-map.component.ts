@@ -131,9 +131,14 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   
 
   }
-
+  public friendGarageMarkers:any[] = []
   public addGarageMarkers() {
     console.log('start', this.friendGarages);
+
+    this.friendGarageMarkers.forEach((garage) => {
+      this.map.removeLayer(garage)
+    })
+
     
     this.friendGarages.forEach(garage => {
       console.log("garage:", garage);
@@ -149,8 +154,9 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         }
       }));
       let circle = L.circle([lat, lng], 100).addTo(this.map).setStyle({ color: '#20C912' });
-
       console.log("end:", garage);
+      this.friendGarageMarkers.push(garageMarker)
+      this.friendGarageMarkers.push(circle)
     });
   }
 
