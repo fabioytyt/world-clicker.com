@@ -98,7 +98,8 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
   })
  
 
-  this.auth.user$.subscribe(user => {
+  this.auth.user$.subscribe(() => {
+    let user = JSON.parse(localStorage.getItem("key"))
     console.log("user21", user);
     
     if (user) {
