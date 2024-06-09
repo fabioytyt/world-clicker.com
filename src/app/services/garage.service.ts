@@ -25,7 +25,8 @@ export class GarageService {
           console.log(e[0].garages, userId, e[0], "userSubscription");
           friendGarages.push(...e[0].garages)
           console.log("friendGarage", friendGarages);
-          
+          localStorage.setItem("friendGarages", JSON.stringify(friendGarages))
+          return(friendGarages)
         })
 
       

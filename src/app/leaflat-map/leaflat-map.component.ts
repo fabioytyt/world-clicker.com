@@ -112,6 +112,9 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         
         this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
       });
+
+      this.friendGarages = JSON.parse(localStorage.getItem("friendGarages"))
+      this.addGarageMarkers()
       
     
 
