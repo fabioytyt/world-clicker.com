@@ -105,7 +105,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       console.log("user21", user);
     
     if (user) {
-      this.garageService.getFriendsGarages(user.uid).pipe(
+      this.garageService.getFriendsGarages(user.user.uid).pipe(
         take(1)
       ).subscribe(garages => {
         this.friendGarages = garages;
