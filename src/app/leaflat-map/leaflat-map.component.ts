@@ -149,6 +149,8 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         }
       }));
       let circle = L.circle([lat, lng], 100).addTo(this.map).setStyle({ color: '#20C912' });
+
+      console.log("end:", garage);
     });
   }
 
