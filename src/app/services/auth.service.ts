@@ -189,21 +189,14 @@ export class AuthService {
 
   public addNotUpdateDataToUser(data:  {}) {
     
-    if(localStorage.getItem("key")){
+   
      // this.googleSignin()
      // console.log(data, this.currentUser._delegate.uid);
      const user = localStorage.getItem("key")
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}/data/data`);
      return userRef.set(data);
-   }
-   else if (this.currentUser) {
-     console.log(data, this.currentUser._delegate.uid);
-     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.currentUser._delegate.uid}/data/data`);
-     return userRef.set(data);
-   }
-   else {
-     return null;
-   }
+  
+   
  }
 
   public getDataFromUser(user) {
