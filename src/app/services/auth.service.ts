@@ -59,7 +59,7 @@ export class AuthService {
     console.log(credential);
     localStorage.setItem("key", credential.user.uid)
     localStorage.setItem("userData", JSON.stringify(credential.user))
-    this.addNotUpdateDataToUser({user: credential.user})
+    this.addNotUpdateDataToUser({user: credential.user}, credential.user.uid)
     this.updateUserData(credential.user);
     this.addDataToUser({user: credential.user});
     this.addAllUsers({user: credential.user})
@@ -187,12 +187,12 @@ export class AuthService {
     }
   }
 
-  public addNotUpdateDataToUser(data:  {}) {
+  public addNotUpdateDataToUser(data:  {}, id:string) {
     
    
      // this.googleSignin()
      // console.log(data, this.currentUser._delegate.uid);
-     const user = localStorage.getItem("key")
+     const user = id;
      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user}/data/data`);
      return userRef.set(data);
   
