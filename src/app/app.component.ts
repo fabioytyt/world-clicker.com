@@ -128,7 +128,9 @@ export class AppComponent implements OnInit{
         coins: localStorage.getItem("coins"),
         cps: localStorage.getItem("cps"),
         update: seconds,
-        user: JSON.parse(localStorage.getItem("userData"))
+        user: JSON.parse(localStorage.getItem("userData")),
+        garages: JSON.parse(localStorage.getItem("garages")),
+        friends: JSON.parse(localStorage.getItem("friends"))
       })
     }, 25000)
 

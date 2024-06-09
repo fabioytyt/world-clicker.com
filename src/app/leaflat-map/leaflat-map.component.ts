@@ -1,11 +1,12 @@
 import { AfterViewInit, Component,  EventEmitter,  Input,  OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
-import { map } from 'rxjs';
+import { map, take } from 'rxjs';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { CurrencyPipe } from '../currency.pipe';
 import { Router } from '@angular/router';
 import { CoinsService } from '../coins.service';
+import { GarageService } from '../services/garage.service';
 
 @Component({
   selector: 'app-leaflat-map',
@@ -86,6 +87,9 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
         let circle2 = L.circle([e.lat,e.lng], 100).addTo(this.map).setStyle({color: '#20C912'});;
       })
     }, 500);
+
+    
+
   }
 
   this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((data) => {
@@ -93,9 +97,40 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
     
   })
  
+
+  this.auth.user$.subscribe(user => {
+    if (user) {
+      this.garageService.getFriendsGarages(user.uid).pipe(
+        take(1)
+      ).subscribe(garages => {
+        this.friendGarages = garages;
+        // this.loadMap(); // Funktion zum Laden der Karte
+        this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
+      });
+    }
+  });
+
+  
   
 
   }
+
+  public addGarageMarkers() {
+    this.friendGarages.forEach(garage => {
+      const lat = garage.location.lat;
+      const lng = garage.location.lng;
+      
+      let garageMarker = L.marker([lat, lng], { icon: this.garageIcon }).addTo(this.map).on("click", (a => {
+        let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [this.currentPos.coords.latitude, this.currentPos.coords.longitude]);
+        if (distance < 100) {
+          // this.hideMap("garageClick");
+          this.router.navigate(['garageClick']);
+        }
+      }));
+      let circle = L.circle([lat, lng], 100).addTo(this.map).setStyle({ color: '#20C912' });
+    });
+  }
+
 
   
    iconHome = L.divIcon({
@@ -298,7 +333,7 @@ setTimeout(() => {
   };
 
   public user = JSON.parse(localStorage.getItem("userData"));
-  constructor(public auth: AuthService, public router: Router, public coinService: CoinsService) { 
+  constructor(public auth: AuthService, public router: Router, public coinService: CoinsService, public garageService: GarageService) { 
 
     if(localStorage.getItem("userData")) {
       console.log(JSON.parse(localStorage.getItem("userData")));
@@ -953,4 +988,7 @@ console.log("fertig Random");
       console.log(this.visible);
       
     }
+
+    public friendGarages: any[] = [];
+
 }
