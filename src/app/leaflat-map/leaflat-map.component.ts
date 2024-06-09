@@ -146,7 +146,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       const lat = garage.lat;
       const lng = garage.lng;
       
-      let garageMarker = L.marker([lat, lng], { icon: this.manCar }).addTo(this.map).on("click", (a => {
+      let garageMarker = L.marker([lat, lng], { icon: this.garageIcon }).addTo(this.map).on("click", (a => {
         let distance = this.getDistance([a.latlng.lat, a.latlng.lng], [this.currentPos.coords.latitude, this.currentPos.coords.longitude]);
         if (distance < 100) {
           // this.hideMap("garageClick");
