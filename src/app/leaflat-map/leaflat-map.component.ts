@@ -100,7 +100,7 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
 
     let user;
      this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((e) => {
-      user = e
+      user = e[0]
 
       console.log("user21", user);
     
