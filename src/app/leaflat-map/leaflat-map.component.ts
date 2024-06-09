@@ -99,13 +99,13 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
  
 
     let user;
-     this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((e) => {
+     this.auth.getDataFromUser(localStorage.getItem("key")).subscribe((e:any) => {
       user = e[0]
 
       console.log("user21", user);
     
     
-      this.garageService.getFriendsGarages(user.user.uid).subscribe(garages => {
+      this.garageService.getFriendsGarages(e[0].user.uid).subscribe(garages => {
         this.friendGarages = garages;
         // this.loadMap(); // Funktion zum Laden der Karte
         console.log('Garages', this.friendGarages);
