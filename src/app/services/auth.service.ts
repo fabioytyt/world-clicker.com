@@ -60,7 +60,7 @@ export class AuthService {
     localStorage.setItem("key", credential.user.uid)
     localStorage.setItem("userData", JSON.stringify(credential.user))
     this.addNotUpdateDataToUser({
-      user: credential.user,
+      user: JSON.parse(localStorage.getItem("userData")),
       myCars: JSON.parse(localStorage.getItem("mycars")),
         carcount: localStorage.getItem("carcount"),
         coins: localStorage.getItem("coins"),
