@@ -103,15 +103,17 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       user = e[0]
 
       console.log("user21", user);
-    
-    
-      this.garageService.getFriendsGarages(e[0].user.uid).subscribe(garages => {
+    e[0].friends.forEach(element => {
+      this.garageService.getFriendsGarages(element).subscribe(garages => {
         this.friendGarages = garages;
         // this.loadMap(); // Funktion zum Laden der Karte
         console.log('Garages', this.friendGarages);
         
-        this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
+        // this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
       });
+    });
+    
+      
 
       this.friendGarages = JSON.parse(localStorage.getItem("friendGarages"))
       this.addGarageMarkers()
