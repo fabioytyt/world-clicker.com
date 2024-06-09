@@ -12,6 +12,7 @@ export class GarageService {
   constructor(private afs: AngularFirestore, private authService: AuthService) {}
 
   getFriendsGarages(userId: string): Observable<any[]> {
+    console.log("friendUser", userId);
     return this.afs.collection(`users/${userId}/data/data/friends`).snapshotChanges().pipe(
       switchMap(friends => {
         const friendIds = friends.map(friend => friend.payload.doc.id);
