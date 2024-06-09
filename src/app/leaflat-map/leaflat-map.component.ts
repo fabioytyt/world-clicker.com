@@ -110,8 +110,11 @@ export class LeaflatMapComponent implements AfterViewInit, OnInit{
       ).subscribe(garages => {
         this.friendGarages = garages;
         // this.loadMap(); // Funktion zum Laden der Karte
+        console.log('Garages', this.friendGarages);
+        
         this.addGarageMarkers(); // Marker für die Garagen der Freunde hinzufügen
       });
+      this.addGarageMarkers();
     }
 
     })
