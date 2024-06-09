@@ -27,8 +27,18 @@ export class GarageService {
           console.log(e[0].garages, userId, e[0], "userSubscription");
           this.friendGarages.push(...e[0].garages)
           console.log("friendGarage", this.friendGarages);
-          localStorage.setItem("friendGarages", JSON.stringify(this.friendGarages))
-          return(this.friendGarages)
+          
+
+
+          let finished = e[0].garages.filter((value, index, self) =>
+            index === self.findIndex((t) => (
+              t.lat === value.lat && t.lng === value.lng
+            ))
+          )
+          console.log(finished);
+          localStorage.setItem("friendGarages", JSON.stringify(finished))
+
+          return(finished)
         })
 
       
