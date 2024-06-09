@@ -11,10 +11,11 @@ import { fromUserCoordinate } from 'ol/proj';
 })
 export class GarageService {
   constructor(private afs: AngularFirestore, private authService: AuthService) {}
-
+  public friendGarages: any[] = []
   getFriendsGarages(userId: string): Observable<any[]> {
+    this.friendGarages = [];
     console.log("friendUser", userId);
-    let friendGarages: any[] = []
+   
     return this.afs.collection(`users/${userId}/data/data/friends`).snapshotChanges().pipe(
       switchMap(friends => {
         // const friendIds = friends.map(friend => friend.payload.doc.id);
@@ -24,15 +25,15 @@ export class GarageService {
         
         this.authService.getDataFromUser(userId).subscribe((e:any) => {
           console.log(e[0].garages, userId, e[0], "userSubscription");
-          friendGarages.push(...e[0].garages)
-          console.log("friendGarage", friendGarages);
-          localStorage.setItem("friendGarages", JSON.stringify(friendGarages))
-          return(friendGarages)
+          this.friendGarages.push(...e[0].garages)
+          console.log("friendGarage", this.friendGarages);
+          localStorage.setItem("friendGarages", JSON.stringify(this.friendGarages))
+          return(this.friendGarages)
         })
 
       
         
-        return (friendGarages);
+        return (this.friendGarages);
       }),
       map(garagesArray => garagesArray.flat())
     );
